@@ -1,6 +1,5 @@
 	var visual_options = {
-		nodes  : { 	
-			entityID : 
+		nodes  : { 	entityID : 
 			{ 
 				"VAC_E1" :
 				 	 {	color :
@@ -56,8 +55,7 @@
 			type : 
 			{ 
 				"Wind Turbine Agent" :
-				  { color : 'red',
-							} 
+				  { color : 'red' } 
 			},		
 	},
 

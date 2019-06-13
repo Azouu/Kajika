@@ -196,8 +196,31 @@
 			
 		}
 
+
+		function hasNumberProperty(obj) {
+			return Object.keys(obj).forEach(function(key,index) {
+				return (key.startsWith('$number'));
+			});
+		}
+		function cleanJSON(json) {
+			Object.keys(json).forEach(function(key,index) {
+				for (ent in json[index]) {
+					var entity = json[key][ent];
+					for (att in entity.attributeMap) {
+						var attribute = entity.attributeMap[att];
+						if (attribute instanceof Object && hasNumberProperty(attribute)) {
+							var number = attribute[0]; // $number
+							attribute = number;
+						} 
+					}
+				}
+			});
+			return json;	
+		}
+
 		// Get the php query results for all the entities
 		var snapshots = <?php echo $json ?>;
+		
 		var length = Object.keys(snapshots).length;
 
 		var graph_container = document.getElementById("graph-container");
@@ -222,8 +245,8 @@
 
 		Plotly.plot(graph_container,  [], layout, config);
 
-		map = getMapEntities(snapshots);
-		snapshots = null; //"frees" the snapshots variable that can be heavy	
+		map = getMapEntities(cleanJSON(snapshots));
+	//	snapshots = null; //"frees" the snapshots variable that can be heavy	
 
 		//displays the name of all the agents in the corresponding div
 		for (entity of _.keys(map)) { 

@@ -256,7 +256,7 @@ class NetworkManager {
 		for (var i = this.getIndexMax() - 1; i > 0; i--) {
 			map.back.push(this.getNetworkDataDifferences(i, i - 1));
 		}
-		return map;
+		return map;	
 	}
 
 	isCurrentIndexMax() {
@@ -725,7 +725,7 @@ class Customizer {
 
 	static checkAttributeInput(input, experiment) {
 		var inputError = $("#alarmAttribute");
-		var expression = input.value.split(' ');
+		var expression = input.value.split(' ')	;
 		if (! experiment.attributeExists(expression[0])) {
 			inputError.html('Attribut inexistant');
 			setTimeout(function(){
