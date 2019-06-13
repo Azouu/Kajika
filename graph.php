@@ -196,6 +196,17 @@
 			
 		}
 
+		function replaceNumberproperty(obj) {
+			var number;
+			if (obj instanceof Object) {
+				Object.keys(obj).forEach(function(key,index) {
+					if (key.startsWith('$number')) {
+						number = obj[key];
+					}
+				});
+			return number;
+			}
+		}
 
 		function hasNumberProperty(obj) {
 			return Object.keys(obj).forEach(function(key,index) {
@@ -208,9 +219,10 @@
 					var entity = json[key][ent];
 					for (att in entity.attributeMap) {
 						var attribute = entity.attributeMap[att];
+						console.log(attribute);
 						if (attribute instanceof Object && hasNumberProperty(attribute)) {
 							var number = attribute[0]; // $number
-							attribute = number;
+							attribute = replaceNumberproperty(attribute);
 						} 
 					}
 				}
