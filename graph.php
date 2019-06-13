@@ -201,7 +201,7 @@
 			if (obj instanceof Object) {
 				Object.keys(obj).forEach(function(key,index) {
 					if (key.startsWith('$number')) {
-						number = obj[key];
+						number = parseFloat(obj[key]);
 					}
 				});
 			return number;
@@ -216,14 +216,14 @@
 		function cleanJSON(json) {
 			Object.keys(json).forEach(function(key,index) {
 				for (ent in json[index]) {
-					var entity = json[key][ent];
-					for (att in entity.attributeMap) {
-						var attribute = entity.attributeMap[att];
-						console.log(attribute);
-						if (attribute instanceof Object && hasNumberProperty(attribute)) {
-							var number = attribute[0]; // $number
-							attribute = replaceNumberproperty(attribute);
-						} 
+					var entities = json[key][ent];
+					for (ent in entities) {
+						for (att in entities[ent].attributeMap) {
+							var attribute = entities[ent].attributeMap[att];
+							if (attribute instanceof Object && hasNumberProperty(attribute)) {
+								attribute = replaceNumberproperty(attribute);
+							} 
+						}
 					}
 				}
 			});
