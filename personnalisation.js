@@ -18,39 +18,23 @@
 		attributeMap : 
 			{
 				"criticality" : { 
-
-					lt : {
+			/*		lt : {
 						value : 40,
 						id : ["VAC_E1", "VAC_E3"],
 						options : {
 							color : "black"
 						}
-					},
-					gt : {
-						value : 70,
-						options : {
-							
-						}
-					},
+					},	*/
+
 					between : {
-						value : [40,100],
-						id : ['VAC_E3'],
-						options : {
-							color : 'grey'
-						}
-					}
-
-				},
-				"error" : {
-
-						gt : {
-							value : 7,	
-							options : {
-								color : "yellow"
-							}
-						}
-
-					}
+							map : [
+								[ [20,40], { color : "black"} ],
+								[ [40, 50], { color : "grey"}]
+							]
+			
+						}		
+					},
+			
 			},
 			type : 
 			{ 
