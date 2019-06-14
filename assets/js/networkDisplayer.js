@@ -337,7 +337,7 @@ class Player {
 	//starts the simulation
 	toggle() {
 		var player = this;
-		//activates/desactivates the paused state
+		//activates/deactivates the paused state
 		this.paused = ! this.paused;
 		this.switchIcon();	
 		if (!this.paused) {
@@ -595,11 +595,11 @@ class Customizer {
  
 	//get an 'entity' or 'relation' element
 	//'object' is used in the next functions as the attributeMap parts of 'visual_options' in 'personnalisation.js'
-	static isOptionAppliable(element, object) {
+	static isOptionAppliable(element, mapEntry) {
 		// for the attributeMap part of 'visual_options'
 		// if there is an id array property, the id must be included in the array for the option to be applied
 		var elementID = Experiment.getID(element);
-		return !(_.has(object, 'id')) || (_.has(object, 'id') && object.id.includes(elementID)); 
+		return mapEntry.length == 2 || (mapEntry.length == 3 && mapEntry[2].includes(elementID)); 
 	}
 
 
@@ -619,9 +619,12 @@ class Customizer {
 				var op1 = elementAttributeMap[key];
 				//loop through all the operators, and check if the option is appliable and if the value is correct
 				Object.keys(attributeOperators).forEach(function(key,index) {
-					var op2 = attributeOperators[key].value;
-					if (Customizer.isExpressionValid(key, op1, op2) && Customizer.isOptionAppliable(element, attributeOperators[key])) {
-						resultObject = _.defaults(resultObject, attributeOperators[key].options);
+					// loop through all the map lines
+					for (var mapEntry of attributeOperators[key].map) {
+						var op2 = mapEntry[0];
+						if (Customizer.isExpressionValid(key, op1, op2) && Customizer.isOptionAppliable(element, mapEntry)) {
+							resultObject = _.defaults(resultObject, mapEntry[1]);
+						}
 					}
 				});
 

@@ -116,7 +116,9 @@
 		    <div class="mx-auto container" id="player">
 		    	<!-- Le slider avec l'affichage dynamique du snapshot courant et de son nombre -->
 		    	<div class="mx-auto row">
-			    	<input type="range" name="pot" id="myRange" min='1' class="slider col-sm"> 
+					<div class="col-sm">
+			    		<input type="range" name="pot" id="myRange" min='1' class="slider"> 
+					</div>
 			    	<p class="col-"><span id="rangeValue"></span></p>
 		  		 </div>
 
