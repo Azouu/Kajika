@@ -196,43 +196,8 @@
 			
 		}
 
-		function replaceNumberproperty(obj) {
-			var number;
-			if (obj instanceof Object) {
-				Object.keys(obj).forEach(function(key,index) {
-					if (key.startsWith('$number')) {
-						number = parseFloat(obj[key]);
-					}
-				});
-			return number;
-			}
-		}
-
-		function hasNumberProperty(obj) {
-			return Object.keys(obj).forEach(function(key,index) {
-				return (key.startsWith('$number'));
-			});
-		}
-		function cleanJSON(json) {
-			Object.keys(json).forEach(function(key,index) {
-				for (ent in json[index]) {
-					var entities = json[key][ent];
-					for (ent in entities) {
-						for (att in entities[ent].attributeMap) {
-							var attribute = entities[ent].attributeMap[att];
-							if (attribute instanceof Object && hasNumberProperty(attribute)) {
-								attribute = replaceNumberproperty(attribute);
-							} 
-						}
-					}
-				}
-			});
-			return json;	
-		}
-
 		// Get the php query results for all the entities
-		var snapshots = <?php echo $json ?>;
-		
+		var snapshots = <?php echo $json ?>;		
 		var length = Object.keys(snapshots).length;
 
 		var graph_container = document.getElementById("graph-container");
@@ -240,7 +205,6 @@
 			xaxis : { title : "numéro de snapshot"} ,
 			margin : { t : 10 }
 		};
-
 		var config = {
 		  toImageButtonOptions: {
 		    format: 'png', // one of png, svg, jpeg, webp
@@ -253,18 +217,15 @@
 		  scrollZoom : true,
 		  displaylogo : false
 		};
-
-
 		Plotly.plot(graph_container,  [], layout, config);
 
-		map = getMapEntities(cleanJSON(snapshots));
-	//	snapshots = null; //"frees" the snapshots variable that can be heavy	
+		map = getMapEntities(snapshots);
+		snapshots = null; // "frees" the snapshots variable that can be heavy	
 
 		//displays the name of all the agents in the corresponding div
 		for (entity of _.keys(map)) { 
 			document.getElementById("e-g-checkboxes").innerHTML += writeEntityCheckbox(entity);
 		}
-
 	</script>
 
 </body>
