@@ -183,3 +183,38 @@
 .inputError {
   font-size: 0.9em;
 }
+
+
+
+/**************************** INDEX **********************/
+/**************************** INDEX **********************/
+/**************************** INDEX **********************/
+
+.icon {
+  width : 3rem;
+  height: auto;
+}
+
+.icon-with-writing {
+  width : 9rem;
+  height: auto;
+}
+
+.little-icon {
+  width : 1.5rem;
+  height: auto;
+}
+
+.icon:hover, .icon-with-writing:hover {
+  transition: 0.3s;
+  opacity: 0.5;
+}
+#presentation {
+  height : 80vh;
+  border-bottom: 1px lightgrey solid;
+}
+
+#about a:hover {
+  text-decoration: none;
+}
+
