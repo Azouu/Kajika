@@ -2,7 +2,7 @@
 <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Accueil </title>
+    <title> Home </title>
 	<?php require_once('dependencies.html'); ?>
 	<script type="text/javascript" src="personnalisation.js"></script> 
 </head>
@@ -29,10 +29,10 @@
 					<div class="col-sm-12 my-auto">
 						<h1 class="my-auto"> Kajika </h1>
 						<p> <i class="fab fa-github"></i> </p>
-						<p class="lead"> Avec Kajika, visualisez des graphes, et personnalisez leur aspect visuel. </p>
-						<p class="lead"> Suivez l'évolution des variables de vos entités.</p>
+						<p class="lead"> With Kajika, display dynamic, automatically organised, customizable network views. </p>
+						<p class="lead"> Track the attributes of your entities.</p>
 						<a href="doc.php">
-							<button type="button" class="btn btn-outline-dark">Manuel d'utilisation</button>
+							<button type="button" class="btn btn-outline-dark">Get started</button>
 						</a>
 						<br>
 						<a href="https://github.com/Azouu/Kajika">
@@ -50,7 +50,7 @@
 			<!-- Bloc "A propos" -->
 			<section class="text-center mt-3" id="about">
 				<div class="container-fluid">
-					<p class="small"> Application développée dans le cadre du stage de <a href="https://www.linkedin.com/in/ines-louahadj-89ba51151/"> Inès Louahadj </a> sous la tutelle de <a href="https://www.irit.fr/spip.php?page=annuaire&code=12015"> Tanguy Esteoule </a> et <a href="https://www.irit.fr/~Carole.Bernon/"> Carole Bernon </a> dans l'équipe SMAC de l'IRIT. </p>
+					<p class="small"> App made during the internship of <a href="https://www.linkedin.com/in/ines-louahadj-89ba51151/"> Inès Louahadj </a> under the supervision of <a href="https://www.irit.fr/spip.php?page=annuaire&code=12015"> Tanguy Esteoule </a> and <a href="https://www.irit.fr/~Carole.Bernon/"> Carole Bernon </a>, team members of SMAC (IRIT). </p>
 					<a href="https://www.irit.fr"> 
 						<img class="icon" src="assets/img/irit.jpg"> 
 					</a>

@@ -36,7 +36,7 @@
 				</h1>
 
 				<a id="graphBtn" class="btn my-auto" href="graph.php?col=<?php echo $col;?>" >
-					<i class="fas fa-chart-bar"></i> Graphiques
+					<i class="fas fa-chart-bar"></i> Charts
 				</a>
 
 				<a id="optionsCollapse" class="btn my-auto">
@@ -51,17 +51,17 @@
 		   		<div id="network" class="container-fluid col"></div> 
 				    <div id="options-panel" class="container col active overflow-auto border ml-2 p-3"> 
 				    	<h3> Options </h3>
-				    	<h6> Graphe </h6> 
-				    	<p onclick="networkManager.togglePhysics()"> Physique <input id="toggle-one" checked type="checkbox" data-onstyle="success" data-offstyle="danger" > </p>
-				    	<p onclick="networkManager.toggleSelection()"> Sélection <input id="toggle-two" type="checkbox" data-onstyle="success" data-offstyle="danger"> </p>
-				    	<h6 class="mt-4"> Lecteur </h6> 
+				    	<h6> Network </h6> 
+				    	<p onclick="networkManager.togglePhysics()"> Physics <input id="toggle-one" checked type="checkbox" data-onstyle="success" data-offstyle="danger" > </p>
+				    	<p onclick="networkManager.toggleSelection()"> Selection <input id="toggle-two" type="checkbox" data-onstyle="success" data-offstyle="danger"> </p>
+				    	<h6 class="mt-4"> Player </h6> 
 				    	<!-- resets fps and restarts the player with new fps if the player is not paused -->
 				    	<p class="d-inline"> FPS </p><input id="fps" class='form-control d-inline w-75 ml-1' type="number" value="1" min="0" onchange="player.setFPS(this.value); player.toggle(); player.toggle();">  
 
 				    	<!--Tout ce qui concerne les input dynamiques avec les critères pour les entités à afficher sur le graphe -->
-				    	<h6 class="mt-4"> Filtrage des entités </h6>
+				    	<h6 class="mt-4"> Entity filter </h6>
 
-				    	 <label> Par ID </label>
+				    	 <label> By ID </label>
 				    	 <div class="controls" id="inputsID"> 
 				    	 	<form onsubmit="return false;" autocomplete="off">
 				                    <div class="entry input-group col-xs-3">
@@ -76,7 +76,7 @@
 				        </div>
 				        <div class="text-danger inputError  mb-2" id="alarmID"> </div>
 
-				    	 <p> Par type </p>
+				    	 <p> By type </p>
 				    	 <div class="controls" id="inputsType"> 
 				    	 	<form onsubmit="return false;" autocomplete="off">
 				                    <div class="entry input-group col-xs-3">
@@ -91,7 +91,7 @@
 				        </div>
 				        <div class="text-danger inputError  mb-2" id="alarmType"> </div>
 
-				    	 <p> Par attribut </p>
+				    	 <p> By attribute </p>
 				    	 <div class="controls" id="inputsAttribute" > 
 				    	 		<form onsubmit="return false;" autocomplete="off">
 				                    <div class="entry input-group col-xs-3">
@@ -106,7 +106,7 @@
 				        </div>
 				        <div class="text-danger inputError mb-2" id="alarmAttribute"> </div>
 
-				    	 <button type="button" class="btn btn-primary" onclick="reloadNetworkWithFilters(networkManager, experiment)">Appliquer</button>
+				    	 <button type="button" class="btn btn-primary" onclick="reloadNetworkWithFilters(networkManager, experiment)">Apply filters</button>
 				    </div>
 				</div>
 			</div>
@@ -142,7 +142,7 @@
 							<button class="close" data-dismiss="modal" aria-label="Close">
 								<span>&times;</span>
 							</button>
-							<h5 class="modal-title">Informations sur l'expérience </h5>
+							<h5 class="modal-title">Experiment information </h5>
 							<span id="experiment-information"></span>
 						</div>
 					</div>
@@ -157,6 +157,7 @@
 							<button class="close" data-dismiss="modal" aria-label="Close">
 								<span>&times;</span>
 							</button>
+							<h5 class="modal-title">Entity information</h5>
 							<span id="entity-information"></span>
 						</div>
 					</div>
@@ -171,6 +172,7 @@
 							<button class="close" data-dismiss="modal" aria-label="Close">
 								<span>&times;</span>
 							</button>
+							<h5 class="modal-title">Relation information </h5>
 							<span id="relation-information"></span>
 						</div>
 					</div>

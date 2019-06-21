@@ -2,7 +2,7 @@
 <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Mes expériences </title>
+    <title> My experiments </title>
     <?php require_once("dependencies.html") ?>
 
 </head>
@@ -24,7 +24,7 @@
 				<i class="fas fa-align-left"></i>
 			</a>
  
-			<h1 class="mx-auto mt-5">Ma liste d'expériences</h1>
+			<h1 class="mx-auto mt-5">My experiments </h1>
 		</div>
 
 		<!-- Liste des expériences -->
