@@ -29,10 +29,10 @@
 					<div class="col-sm-12 my-auto">
 						<h1 class="my-auto"> Kajika </h1>
 						<p> <i class="fab fa-github"></i> </p>
-						<p class="lead"> Avec Kajika, visualisez des graphes, et personnaliser leur aspect visuel. </p>
+						<p class="lead"> Avec Kajika, visualisez des graphes, et personnalisez leur aspect visuel. </p>
 						<p class="lead"> Suivez l'évolution des variables de vos entités.</p>
 						<a href="doc.php">
-							<button type="button" class="btn btn-outline-dark">Guide</button>
+							<button type="button" class="btn btn-outline-dark">Manuel d'utilisation</button>
 						</a>
 						<br>
 						<a href="https://github.com/Azouu/Kajika">

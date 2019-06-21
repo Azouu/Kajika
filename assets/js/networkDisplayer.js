@@ -14,12 +14,12 @@ class NetworkManager {
 		this.stepsMap = this.generateStepsMap();
 	}
 
+	getCustomizationOptions(experiment) {
+	return customizationOptionsMap[this.experiment.getExperimentName()];
+	}
+
 	getNetworkOptions() {
 		return 	({
-			layout: 
-			{ 
-				improvedLayout : false 
-			},
 		    physics:
 		    {
 		  		enabled: true,
@@ -384,6 +384,10 @@ class Experiment {
 		return _.omit(this.collection[0], '_id');
 	}
 
+	getExperimentName() {
+		return this.collection[0].experiment[0];
+	}
+
 	getEntities(snapshotNumber) {
 		return this.getSnapshot(snapshotNumber).entities;
 	}
@@ -640,6 +644,7 @@ class Customizer {
 	static getVisualOptions(element, type) {
 		var resultObject = {};
 		// get the type of element : "nodes" or "relations", and also the corresponding index of 'visual_options' in 'personnalisation.js'
+
 		var optionsOfType = visual_options[type];
 
 		// loop through all the keys of 'optionsOfType' : 'entityID' or 'relationID', 'type', 'attributeMap'
