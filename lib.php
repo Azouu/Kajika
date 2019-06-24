@@ -4,9 +4,10 @@
 
 	$client = new MongoDB\Client('mongodb://localhost:27017',
 	[ // if there is no authentification required, leave the array empty
-		'username' => 'michel',
-		'password' => 'ange',
+	  /* 'username' => 'root',
+		'password' => '',
 		"connectTimeoutMS" => 60000
+		*/
 	]);
 
 	// specify the name of the database ($client->DBNAME)
