@@ -57,7 +57,10 @@
 				<div class="col pl-3">
 					<div class="checkbox-container border m-2 p-3">
 						<h5> Attributs </h5>
-						<input type="text" id="searchAttribute"  class="form-control" onkeyup="filterCheckboxes(this.id,'a-g-checkboxes', 'attribute')" placeholder="Attribut à rechercher">
+						<input type="text" id="searchAttribute"  class="d-inline-block form-control w-75" onkeyup="filterCheckboxes(this.id,'a-g-checkboxes', 'attribute')" placeholder="Attribut à rechercher">
+						<button type="button" class="d-inline-block btn btn-light" onclick="resetInput('searchAttribute')">
+				    		<i class="fas fa-sync"></i> 
+				    	</button>
 						<div id="a-g-checkboxes">
 							<?php
 								foreach($arr as $item) {
@@ -70,9 +73,12 @@
 						</div>
 					</div>
 
-					<div class="checkbox-container border m-2 p-3	">
+					<div class="checkbox-container border m-2 p-3">
 						<h5> Agents </h5>
-						<input type="text" id="searchEntity" class="form-control" onkeyup="filterCheckboxes(this.id,'e-g-checkboxes', 'entity')" placeholder="Entité à rechercher">
+						<input type="text" id="searchEntity" class="d-inline-block form-control w-75" onkeyup="filterCheckboxes(this.id,'e-g-checkboxes', 'entity')" placeholder="Entité à rechercher">
+						<button type="button" class="d-inline-block btn btn-light" onclick="resetInput('searchEntity')">
+				    		<i class="fas fa-sync"></i> 
+				    	</button>
 						<div id="e-g-checkboxes">
 
 						</div>
@@ -194,6 +200,12 @@
 					Plotly.deleteTraces(graph_container, searchPlotType(graph_container, checkbox.value, 0));
 				}
 			
+		}
+
+		// empty the input of the given 'id', and triggers the onkeyup event to show all checkboxes
+		function resetInput(id) {
+			$('#' + id).val('');
+			$('#' + id).keyup();
 		}
 
 		// Get the php query results for all the entities

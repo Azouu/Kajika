@@ -15,7 +15,19 @@
 <body>
 <div class="wrapper">
 
-	<?php require_once('menu.html'); ?>
+	<?php 
+		require_once('menu.html'); 
+		$filterEntryModel = '<form onsubmit="return false;" autocomplete="off">' .
+				                    '<div class="entry input-group col-xs-3">' .
+				                       '<input class="form-control" name="fields[]" type="text" onchange="Customizer.checkTypeInput(this, experiment)"/>' . 
+				                    	'<span class="input-group-btn">' . 
+				                            '<button class="btn btn-success btn-add" type="button">' .
+				                                '<i class="fas fa-plus"></i>' . 
+				                            '</button>' .
+				                        '</span>' .	                  
+				                '</div>' . 
+				            '</form>';
+	?>
 
 
 	    <div class="container-fluid" id="main">
@@ -107,7 +119,7 @@
 				        <div class="text-danger inputError mb-2" id="alarmAttribute"> </div>
 
 				        <!-- Boutons pour appliquer ou enlever les options de filtrage -->
-				    	 <button type="button" class="d-inline-block btn btn-primary" onclick="reloadNetworkWithFilters(networkManager, experiment)">
+				    	 <button type="button" class="d-inline-block btn btn-primary" onclick="reloadNetworkWithFilters()">
 				    		 Apply filters
 				    	</button>
 				    	 <button type="button" class="d-inline-block btn btn-outline-primary " onclick="resetFilters()">
@@ -268,11 +280,22 @@
 	});
 
 
-	function reloadNetworkWithFilters(networkManager, experiment) {
+
+	function reloadNetworkWithFilters() {
 		var currentIndex = networkManager.currentIndex;
 		networkManager = new NetworkManager(experiment);
 		networkManager.currentIndex = currentIndex;
 		networkManager.loadSnapshot(currentIndex);
+	}
+
+	function resetFilters() {
+		var inputsIDsArray = ['#inputsID', '#inputsType', '#inputsAttribute'];
+		for (var inputsID of inputsIDsArray) {
+			var inputsGroupArray = inputsID + ' form';
+			$(inputsGroupArray).remove();
+			$(inputsID).append('<?php echo $filterEntryModel ?>');
+		}
+		reloadNetworkWithFilters(networkManager, experiment);
 	}
 
 </script>
