@@ -59,7 +59,7 @@
 						<img class=" icon" src="assets/img/smac.png">
 					</a>
 					<a href="http://www.univ-tlse3.fr/">
-						<img class="icon-with-writing" src="assets/img/logo_UT3">			
+						<img class="icon-with-writing" src="assets/img/Logo_UT3.jpg">			
 					</a>
 					<a href="http://iut.ups-tlse.fr/">		
 						<img class="icon" src="assets/img/iut.jpg">	

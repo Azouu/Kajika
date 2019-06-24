@@ -106,7 +106,13 @@
 				        </div>
 				        <div class="text-danger inputError mb-2" id="alarmAttribute"> </div>
 
-				    	 <button type="button" class="btn btn-primary" onclick="reloadNetworkWithFilters(networkManager, experiment)">Apply filters</button>
+				        <!-- Boutons pour appliquer ou enlever les options de filtrage -->
+				    	 <button type="button" class="d-inline-block btn btn-primary" onclick="reloadNetworkWithFilters(networkManager, experiment)">
+				    		 Apply filters
+				    	</button>
+				    	 <button type="button" class="d-inline-block btn btn-outline-primary " onclick="resetFilters()">
+				    		<i class="fas fa-sync"></i> Reset
+				    	</button>
 				    </div>
 				</div>
 			</div>
