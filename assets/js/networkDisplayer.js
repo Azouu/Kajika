@@ -16,7 +16,7 @@ class NetworkManager {
 
 	getCustomizationOptions() {
 		var experimentName = this.experiment.getExperimentName();
-		if (_.has(customizationOptionsMap, experimentName)) {
+		if (_.has(customizationOptionsMap, experimentName) && customizationOptionsMap[experimentName] != null) {
 			return customizationOptionsMap[experimentName];	
 		} 
 		return defaultOptions;	

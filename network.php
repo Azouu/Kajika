@@ -300,6 +300,7 @@
 
 
 	function reloadNetworkWithFilters() {
+		var inputsIDsArray = ['#inputsID', '#inputsType', '#inputsAttribute'];
 		var currentIndex = networkManager.currentIndex;
 		networkManager = new NetworkManager(experiment);
 		networkManager.currentIndex = currentIndex;
