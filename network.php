@@ -8,8 +8,8 @@
 				echo $database->$col->findOne()->experimentName; 
 			?> 
 	</title>
-	<?php require_once('dependencies.html'); ?>
 	<script type="text/javascript" src="personnalisation.js"></script> 
+	<?php require_once('dependencies.html'); ?>
 </head>
 
 <body>

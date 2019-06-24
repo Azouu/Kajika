@@ -14,8 +14,12 @@ class NetworkManager {
 		this.stepsMap = this.generateStepsMap();
 	}
 
-	getCustomizationOptions(experiment) {
-	return customizationOptionsMap[this.experiment.getExperimentName()];
+	getCustomizationOptions() {
+		var experimentName = this.experiment.getExperimentName();
+		if (_.has(customizationOptionsMap, experimentName)) {
+			return customizationOptionsMap[experimentName];	
+		} 
+		return defaultOptions;	
 	}
 
 	getNetworkOptions() {
@@ -202,7 +206,7 @@ class NetworkManager {
 			// console.log(ent);
 			var label = this.experiment.getName(ent);
 			var title = DataWriter.writeObjectHTML(ent);
-			var nodeOptions = Customizer.getVisualOptions(ent, 'nodes');
+			var nodeOptions = Customizer.getVisualOptions(this, ent, 'nodes');
 			var nodeData = {id : ent.entityID, label : label, title : title};
 			return _.merge(nodeData, nodeOptions);
 		}
@@ -219,7 +223,7 @@ class NetworkManager {
 	getEdge(snapshotNumber, id) {
 		var rel = this.experiment.getRelation(snapshotNumber, id);
 		var title = DataWriter.writeObjectHTML(rel);
-		var edgeOptions = Customizer.getVisualOptions(rel, 'relations');
+		var edgeOptions = Customizer.getVisualOptions(this, rel, 'relations');
 		var edgeData = {id : rel.relationID, from : rel.nodeAid, to : rel.nodeBid, ...(rel.isOriented && {arrows : "to"}), color : {inherit : false}};
 		return _.merge(edgeData,edgeOptions);
 	}
@@ -385,7 +389,7 @@ class Experiment {
 	}
 
 	getExperimentName() {
-		return this.collection[0].experiment[0];
+		return this.collection[0].experimentName;
 	}
 
 	getEntities(snapshotNumber) {
@@ -638,14 +642,17 @@ class Customizer {
 		return resultObject;
 	}
 
+
+
 	//get either a relation or an entity as 'element'
 	//get 'nodes' or 'relations' as type, depending on the type of the element
 	//return an object containing options that are applied directly in the vis.js view elements
-	static getVisualOptions(element, type) {
+	static getVisualOptions(networkManager, element, type) {
 		var resultObject = {};
 		// get the type of element : "nodes" or "relations", and also the corresponding index of 'visual_options' in 'personnalisation.js'
+		var optionsVar =  networkManager.getCustomizationOptions();
+		var optionsOfType = optionsVar[type];
 
-		var optionsOfType = visual_options[type];
 
 		// loop through all the keys of 'optionsOfType' : 'entityID' or 'relationID', 'type', 'attributeMap'
 		// 'element' parameter has all of the 'optionsOfType' keys as properties 
@@ -777,6 +784,9 @@ class Customizer {
 
 
 
+function getExperimentCustomization() {
+
+}
 
 
 

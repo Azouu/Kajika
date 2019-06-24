@@ -1,4 +1,4 @@
-//
+
 var customizationOptionsMap = {
-	"Amawind_example" : visual_options
+	"Amawind_example" : amawindOptions
 }

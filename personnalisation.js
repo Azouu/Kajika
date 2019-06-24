@@ -1,6 +1,6 @@
-	var visual_options = {
-		nodes  : { 	entityID : 
-			{ 
+var amawindOptions = {
+		nodes  : { 	
+			entityID : 	{ 
 				"VAC_E1" :
 				 	 {	color :
 				 	 	{ 
@@ -15,10 +15,8 @@
 					 	y : 600}
 			},
 
-		attributeMap : 
-			{
+			attributeMap : {
 				"criticality" : { 
-
 					between : {
 							map : [
 								[ [20,40], { color : "black"} ],
@@ -27,20 +25,31 @@
 			
 						}		
 					},
-			
 			},
-			type : 
-			{ 
+			type : { 
 				"Wind Turbine Agent" :
 				  { color : 'red' } 
-			},		
+			}		
 	},
 
 
-	relations :
-	{ 
+	relations : { 
 		relationID : {}, 
 		type : {}, 
 		attributeMap : {}
 	}			
 };	
+
+var defaultOptions = {
+	nodes  : { 	
+		entityID : {},
+		attributeMap : {},
+		type : {}
+	},
+
+	relations :	{ 
+		relationID : {}, 
+		type : {}, 
+		attributeMap : {}
+	}
+};

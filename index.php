@@ -4,10 +4,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Home </title>
 	<?php require_once('dependencies.html'); ?>
-	<script type="text/javascript" src="personnalisation.js"></script> 
 </head>
 
 <body>
+
 <div class="wrapper">
 
 	<?php require_once('menu.html'); ?>
@@ -50,7 +50,8 @@
 			<!-- Bloc "A propos" -->
 			<section class="text-center mt-3" id="about">
 				<div class="container-fluid">
-					<p class="small"> App made during the internship of <a href="https://www.linkedin.com/in/ines-louahadj-89ba51151/"> Inès Louahadj </a> under the supervision of <a href="https://www.irit.fr/spip.php?page=annuaire&code=12015"> Tanguy Esteoule </a> and <a href="https://www.irit.fr/~Carole.Bernon/"> Carole Bernon </a>, team members of SMAC (IRIT). </p>
+					<p class="small"> App made during the internship of <a href="https://www.linkedin.com/in/ines-louahadj-89ba51151/"> Inès Louahadj </a> under the supervision of <a href="https://www.irit.fr/spip.php?page=annuaire&code=12015"> Tanguy Esteoule </a> and <a href="https://www.irit.fr/~Carole.Bernon/"> Carole Bernon</a>, team members of SMAC (IRIT). </p>
+					<!-- Bloc "Icones" -->
 					<a href="https://www.irit.fr"> 
 						<img class="icon" src="assets/img/irit.jpg"> 
 					</a>
@@ -64,25 +65,17 @@
 						<img class="icon" src="assets/img/iut.jpg">	
 					</a>
 					<p class="small"> IRIT-SMAC 2019 </p>
-	
 				</div>
 			</section>
 			
-
-
 			
 	</div>
 	
 
-
 <script type="text/javascript">
-
 	$('#optionsCollapse').on('click', function () {
 	    $('#options-panel').toggleClass('active');
 	});
-
-
-
 
 </script>
 </body>
