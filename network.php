@@ -71,7 +71,11 @@
 				    	<p class="d-inline"> FPS </p><input id="fps" class='form-control d-inline w-75 ml-1' type="number" value="1" min="0" onchange="player.setFPS(this.value); player.toggle(); player.toggle();">  
 
 				    	<!--Tout ce qui concerne les input dynamiques avec les critères pour les entités à afficher sur le graphe -->
-				    	<h6 class="mt-4"> Entity filter </h6>
+				    	<div>
+				    		<h6 class="d-inline-block mt-4"> Entity filter </h6> 
+				    		
+				   		 </div>
+
 
 				    	 <label> By ID </label>
 				    	 <div class="controls" id="inputsID"> 
@@ -103,7 +107,20 @@
 				        </div>
 				        <div class="text-danger inputError  mb-2" id="alarmType"> </div>
 
-				    	 <p> By attribute </p>
+					     <p class="d-inline-block"> By attribute </p>
+					    <button class="d-inline-block btn btn-light" data-toggle="popover" data-trigger="hover" data-html="true" data-placement="top" title="Operators" 
+					   	data-content="[attribute name] [operator] [value] <br>
+					   		<b> Operators  </b>: <br>
+					   		lt : &lt; <br>
+					   		let : &lt;= <br>
+					   		gt : &gt;<br>
+					   		get : &gt;= <br>
+					   		eq : == <br>
+					   		neq : !=" > 
+					    	 	<i class="fas fa-question-circle"></i> 
+					    </button>
+				
+
 				    	 <div class="controls" id="inputsAttribute" > 
 				    	 		<form onsubmit="return false;" autocomplete="off">
 				                    <div class="entry input-group col-xs-3">
@@ -209,6 +226,7 @@
 	$(function() {
     	$('#toggle-one').bootstrapToggle();	
     	$('#toggle-two').bootstrapToggle();	
+    	$('[data-toggle="popover"]').popover();
 	});
 
 
