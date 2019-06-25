@@ -32,7 +32,7 @@
 						<p class="lead"> With Kajika, display dynamic, automatically organised, customizable network views. </p>
 						<p class="lead"> Track the attributes of your entities.</p>
 						<a href="doc.php">
-							<button type="button" class="btn btn-outline-dark">Get started</button>
+							<button type="button" class="btn btn-dark">Get started</button>
 						</a>
 						<br>
 						<a href="https://github.com/Azouu/Kajika">

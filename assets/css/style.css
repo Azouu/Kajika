@@ -214,6 +214,10 @@
   border-bottom: 1px lightgrey solid;
 }
 
+#presentation a:hover {
+  text-decoration: none;
+}
+
 #about a:hover {
   text-decoration: none;
 }
