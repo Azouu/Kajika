@@ -268,9 +268,12 @@
 	        //get the id of the 'control' class parent, which is either 'inputsID' or 'inputsType' or 'inputsAttribute'
 	        var idParent = $(this).parents('.controls').attr('id');
 	        var controlForm = $('#' + idParent + '.controls form:first'),
-	            currentEntry = $(this).parents('.entry:first'),
-	            newEntry = $(currentEntry.clone()).appendTo(controlForm);
+	            currentEntry = $(this).parents('.entry:first');
+	           
 
+	        if (currentEntry.children('input').val() != '') {
+	        	var  newEntry = $(currentEntry.clone().val('')).appendTo(controlForm).val('');
+	        	
 	        switch(idParent) {
 	        	case 'inputsID':
 	        		newEntry.on('change', Customizer.checkIDInput(newEntry, experiment));
@@ -288,7 +291,7 @@
 	            .removeClass('btn-add').addClass('btn-remove')
 	            .removeClass('btn-success').addClass('btn-danger')
 	            .html('<i class="fas fa-minus"></i>');
-	   			 }).on('click', '.btn-remove', function(e)
+	   			 }}).on('click', '.btn-remove', function(e)
 				    {
 						$(this).parents('.entry:first').remove();
 
@@ -300,7 +303,6 @@
 
 
 	function reloadNetworkWithFilters() {
-		var inputsIDsArray = ['#inputsID', '#inputsType', '#inputsAttribute'];
 		var currentIndex = networkManager.currentIndex;
 		networkManager = new NetworkManager(experiment);
 		networkManager.currentIndex = currentIndex;

@@ -2,7 +2,7 @@
 <head>
 	<meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Visualisation graphique </title>
+    <title> Charts </title>
     <?php require_once("dependencies.html") ?>
 
 </head>
@@ -47,7 +47,7 @@
 				<i class="fas fa-align-left"></i>
 			</a>
  
-			<h1 class="mx-auto mt-5">Visualisation des graphiques</h1>
+			<h1 class="mx-auto mt-5">Charts</h1>
 		</div>
 
 		<div class="container-fluid">
@@ -56,8 +56,8 @@
 
 				<div class="col pl-3">
 					<div class="checkbox-container border m-2 p-3">
-						<h5> Attributs </h5>
-						<input type="text" id="searchAttribute"  class="d-inline-block form-control w-75" onkeyup="filterCheckboxes(this.id,'a-g-checkboxes', 'attribute')" placeholder="Attribut à rechercher">
+						<h5> Attributes </h5>
+						<input type="text" id="searchAttribute"  class="d-inline-block form-control w-75" onkeyup="filterCheckboxes(this.id,'a-g-checkboxes', 'attribute')" placeholder="Attribute name research">
 						<button type="button" class="d-inline-block btn btn-light" onclick="resetInput('searchAttribute')">
 				    		<i class="fas fa-sync"></i> 
 				    	</button>
@@ -75,7 +75,7 @@
 
 					<div class="checkbox-container border m-2 p-3">
 						<h5> Agents </h5>
-						<input type="text" id="searchEntity" class="d-inline-block form-control w-75" onkeyup="filterCheckboxes(this.id,'e-g-checkboxes', 'entity')" placeholder="Entité à rechercher">
+						<input type="text" id="searchEntity" class="d-inline-block form-control w-75" onkeyup="filterCheckboxes(this.id,'e-g-checkboxes', 'entity')" placeholder="Entity ID research">
 						<button type="button" class="d-inline-block btn btn-light" onclick="resetInput('searchEntity')">
 				    		<i class="fas fa-sync"></i> 
 				    	</button>
@@ -89,7 +89,7 @@
 
 
 		<a href="<?php echo $_SERVER['HTTP_REFERER']; ?>" class="ml-5"> <!-- Goes to the origin page 'network.php?col=[name of experiment]' -->
-			<button class="btn btn-primary"> <i class="fas fa-arrow-left"></i> Retour </button>	
+			<button class="btn btn-primary"> <i class="fas fa-arrow-left"></i> Return </button>	
 		</a>
 	</div>
 
@@ -214,7 +214,7 @@
 
 		var graph_container = document.getElementById("graph-container");
 		var layout = {
-			xaxis : { title : "numéro de snapshot"} ,
+			xaxis : { title : "snapshot number"} ,
 			margin : { t : 10 }
 		};
 		var config = {
