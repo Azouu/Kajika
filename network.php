@@ -246,17 +246,7 @@
 		$("#experiment-information").html(DataWriter.writeObjectHTML(experiment.getExperimentInformation()));
 	}); 
 
-	networkManager.network.on( 'selectNode', function(params) {
-			DataWriter.showModal('#modal-entity');
-			DataWriter.writeModalSelectedEntities(networkManager);
-	});
-
-	networkManager.network.on( 'selectEdge', function(params) {	
-		if(params.nodes.length === 0) { 
-			DataWriter.showModal('#modal-relation');
-			DataWriter.writeModalSelectedRelations(networkManager);
-		}
-	});
+	
 
 
 	$(function()
@@ -272,7 +262,7 @@
 	           
 
 	        if (currentEntry.children('input').val() != '') {
-	        	var  newEntry = $(currentEntry.clone().val('')).appendTo(controlForm).val('');
+	        	var newEntry = $(currentEntry.clone().val('')).appendTo(controlForm).val('');
 	        	
 	        switch(idParent) {
 	        	case 'inputsID':

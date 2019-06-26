@@ -12,6 +12,22 @@ class NetworkManager {
 					this.getNetworkOptions());
 		this.selectionActivated = false;
 		this.stepsMap = this.generateStepsMap();
+
+
+
+		this.network.on( 'selectNode', function(params) {
+			DataWriter.writeModalSelectedEntities(networkManager);
+			if (params.edges.length == 0 && $('#modal-relation').hasClass('show')) {
+				$('#modal-relation').modal('hide');
+				}	
+		});
+
+		this.network.on( 'selectEdge', function(params) {		
+			DataWriter.writeModalSelectedRelations(networkManager);
+			if (params.nodes.length == 0 && $('#modal-entity').hasClass('show')) {
+				$('#modal-entity').modal('hide');
+			}
+	});
 	}
 
 	getCustomizationOptions() {
@@ -73,13 +89,14 @@ class NetworkManager {
 		    },
 			interaction: 
 			{
+				selectConnectedEdges : false,
 			    multiselect: true 
 			}
 		});
 	}
 
 	getNoPhysicsOptions() {
-		return { physics : false, multiselect : true };
+		return { physics : false, multiselect : true, selectConnectedEdges : false};
 	}
 
 
@@ -91,6 +108,7 @@ class NetworkManager {
 	}
 	
 	loadSnapshot(snapshotNumber) {
+
 		//updates the currentIndex cursor
 		if (! this.selectionActivated) {
 			//create entirely new network elements (changes the disposition of the previous network elements)
@@ -101,6 +119,7 @@ class NetworkManager {
 			this.loadSnapshotWithSelection(this.currentIndex, snapshotNumber);
 		}
 		this.currentIndex = snapshotNumber;
+
 		this.edges.clear();
 		this.edges.add(this.getEdges(snapshotNumber));
 	}
@@ -539,21 +558,23 @@ class DataWriter {
 
 
 	static writeModalSelectedEntities(networkManager) {
+		DataWriter.showModal('#modal-entity');
 		var selectedNodesIds = networkManager.network.getSelectedNodes();
 		//empty the current information
-		$("#entity-information").html('')
+		$("#entity-information").html('') 
 		//if there are nodes selected AND the modal is active, refreshes the information in the modal, else we hide the modal
 		if (selectedNodesIds.length && $('#modal-entity').hasClass('show')) {
 			for (var id of selectedNodesIds) {
 				var element = networkManager.getNode(networkManager.currentIndex, id)
 				$("#entity-information").append(element.title);
-			}
+			} 
 		} else {
 			$('#modal-entity').modal('hide');
 		}
 	}	
 
 	static writeModalSelectedRelations(networkManager) {
+		DataWriter.showModal('#modal-relation');
 		var selectedEdgesIds = networkManager.network.getSelectedEdges();
 		//empty the current information
 		$("#relation-information").html('');
@@ -570,7 +591,7 @@ class DataWriter {
 
 	static updateModals(networkManager) {
 		DataWriter.writeModalSelectedEntities(networkManager);
-	//	DataWriter.writeModalRelations(networkManager);
+		DataWriter.writeModalSelectedRelations(networkManager);
 	}
 
 }
@@ -783,10 +804,6 @@ class Customizer {
 }
 
 
-
-function getExperimentCustomization() {
-
-}
 
 
 
