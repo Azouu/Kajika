@@ -108,7 +108,8 @@ class NetworkManager {
 	}
 	
 	loadSnapshot(snapshotNumber) {
-
+		var selectedNodesIds = this.network.getSelectedNodes();
+		var selectedEdgesIds = this.network.getSelectedEdges();
 		//updates the currentIndex cursor
 		if (! this.selectionActivated) {
 			//create entirely new network elements (changes the disposition of the previous network elements)
@@ -122,6 +123,16 @@ class NetworkManager {
 
 		this.edges.clear();
 		this.edges.add(this.getEdges(snapshotNumber));
+		var experiment = this.experiment;
+		_.remove(selectedNodesIds, function(id) {
+			return experiment.getEntity(snapshotNumber, id) == undefined;
+		});
+		_.remove(selectedEdgesIds, function(id) {
+			return experiment.getRelation(snapshotNumber, id) == undefined;
+		});
+		this.network.setSelection({nodes : selectedNodesIds, edges : selectedEdgesIds});
+		DataWriter.writeModalSelectedEntities(this);
+		DataWriter.writeModalSelectedRelations(this);
 	}
 
 	getAllNeighborsNodes(nodesIDArray) {
