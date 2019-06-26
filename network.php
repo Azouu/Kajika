@@ -135,6 +135,9 @@
 				        </div>
 				        <div class="text-danger inputError mb-2" id="alarmAttribute"> </div>
 
+				        <div class="alert alert-danger" id="errorBox">
+				    		
+				        </div>
 				        <!-- Boutons pour appliquer ou enlever les options de filtrage -->
 				    	 <button type="button" class="d-inline-block btn btn-primary" onclick="reloadNetworkWithFilters()">
 				    		 Apply filters
@@ -142,6 +145,7 @@
 				    	 <button type="button" class="d-inline-block btn btn-outline-primary " onclick="resetFilters()">
 				    		<i class="fas fa-sync"></i> Reset
 				    	</button>
+
 				    </div>
 				</div>
 			</div>
@@ -220,6 +224,7 @@
 
 <script type="text/javascript">
 
+
 	$('#optionsCollapse').on('click', function () {
 	    $('#options-panel').toggleClass('active');
 	});
@@ -259,22 +264,11 @@
 	        var idParent = $(this).parents('.controls').attr('id');
 	        var controlForm = $('#' + idParent + '.controls form:first'),
 	            currentEntry = $(this).parents('.entry:first');
-	           
+	          
+
 
 	        if (currentEntry.children('input').val() != '') {
 	        	var newEntry = $(currentEntry.clone().val('')).appendTo(controlForm).val('');
-	        	
-	        switch(idParent) {
-	        	case 'inputsID':
-	        		newEntry.on('change', Customizer.checkIDInput(newEntry, experiment));
-	        	break;
-	        	case 'inputType':
-	        		newEntry.on('change', Customizer.checkTypeInput(newEntry, experiment));
-	        	break;
-	        	case 'inputsAttribute' :
-	        		newEntry.on('change', Customizer.checkAttributeInput(newEntry, experiment));
-	        	break;
-	        }
 
 	        newEntry.find('input').val('');
 	        controlForm.find('.entry:not(:last) .btn-add')
@@ -290,13 +284,40 @@
 					});
 	});
 
+	function checkFilters() {
+		for (var entry of $('.entry')) {
+			var idParent = $(entry).parents('.controls').attr('id');
+			var refreshOK = true;
+			switch (idParent) {
+				case 'inputsID' :
+				 	if (entry.value != null && !Customizer.checkIDInput(entry, experiment)) {
+				 		refreshOK = false;
+				 	}
+				break;
+				case 'inputsType' :
+					if (entry.value != null && !Customizer.checkTypeInput(entry, experiment)) {
+						refreshOK = false;
+					}
+				break;
+				case 'inputsAttribute' :
+					if (entry.value != null && !Customizer.checkAttributeInput(entry, experiment)) {
+						refreshOK = false;
+					}
+			} 
+
+		}
+		return refreshOK
+	}
 
 
 	function reloadNetworkWithFilters() {
-		var currentIndex = networkManager.currentIndex;
-		networkManager = new NetworkManager(experiment);
-		networkManager.currentIndex = currentIndex;
-		networkManager.loadSnapshot(currentIndex);
+		if (checkFilters()) {
+			$("#errorBox").html('');
+			var currentIndex = networkManager.currentIndex;
+			networkManager = new NetworkManager(experiment);
+			networkManager.currentIndex = currentIndex;
+			networkManager.loadSnapshot(currentIndex);
+		}
 	}
 
 	function resetFilters() {

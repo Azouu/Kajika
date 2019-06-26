@@ -32,9 +32,13 @@ class NetworkManager {
 
 	getCustomizationOptions() {
 		var experimentName = this.experiment.getExperimentName();
-		if (_.has(customizationOptionsMap, experimentName) && customizationOptionsMap[experimentName] != null) {
+		if (_.has(customizationOptionsMap, experimentName)) {
+			if (customizationOptionsMap[experimentName] == undefined || customizationOptionsMap[experimentName] == null) {
+			        return defaultOptions;
+			    }
 			return customizationOptionsMap[experimentName];	
-		} 
+			}
+
 		return defaultOptions;	
 	}
 
@@ -771,45 +775,32 @@ class Customizer {
 	}
 
 	static checkAttributeInput(input, experiment) {
-		var inputError = $("#alarmAttribute");
-		var expression = input.value.split(' ')	;
+		var errorBox = $("#errorBox");
+		console.log(input.value);
+		var expression = input.value.split(" ");
 		if (! experiment.attributeExists(expression[0])) {
-			inputError.html('Attribut inexistant');
-			setTimeout(function(){
-			   inputError.html(null);
-			}, 3000);
+			errorBox.append('Attribute not found <br>');
 		} else if (! ['lt', 'let', 'gt', 'get', 'neq', 'eq'].includes(expression[1])) {
-			inputError.html('Opérateur erroné');
-			setTimeout(function(){
-			   inputError.html(null);
-			}, 3000);
-		} else {
-			inputError.html(null);
-		}
+			errorBox.append('Incorrect operator <br>');
+		} else if (expression.length != 3) {
+			errorBox.append('Incorrect expression form');
+		} 
 	}
 
 	static checkIDInput(input, experiment) {
-		var inputError = $("#alarmID");
+		var errorBox = $("#errorBox");
 		if(! experiment.entityExists(input.value)) {
-			inputError.html('ID inexistant');
-			setTimeout(function(){
-			   inputError.html(null);
-			}, 3000);
-		} else {
-			inputError.html(null);
+			errorBox.append('ID not found <br>');
+
 		}
+		return experiment.entityExists(input.value);
 	}
 
 	static checkTypeInput(input, experiment) {
-		var inputError = $("#alarmType");
+		var errorBox = $("#errorBox");
 		if (! experiment.typeExists(input.value)) {
-			inputError.html('Type inexistant');
-			setTimeout(function(){
-			   inputError.html(null);;
-			}, 3000);
-		} else {
-			inputError.html(null);
-		}
+			errorBox.append('Type not found <br>');
+		} 
 	}
 
 }
