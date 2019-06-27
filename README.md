@@ -39,11 +39,18 @@ For more information on how to install MongoDB, go to https://docs.mongodb.com/v
  
  #### 3. Get the MongoDB driver for XAMPP 
  When you are done with the XAMPP installation, go to https://pecl.php.net/package/mongodb/1.5.5/windows and download the PHP 7.3 Thread Safe package.  
- Unzip it and put the ``` php_mongodb.dll ``` file in the xampp installation folder. The relative path is ``` xampp/php/ext ```.  
- Then, register the ``` php_mongodb.dll ``` file in ```php.ini ```.  It's in  ``` xampp/php/ ``` (php folder).  
- Add the following line : ``` extension=php_mongodb.dll ```  
- Restart XAMPP.
-For complementary information on how to install MongoDB on PHP for Xampp, go to https://learnedia.com/install-mongodb-configure-php-xampp-windows/ .
+ For the next sections, we suppose that you are already located in the xampp installation folder (``` C:\xampp ``` by default in Windows). Unzip the driver and put the ``` php_mongodb.dll ``` file in the `` xampp/php/ext `` folder.  
+Then, register the ``` php_mongodb.dll ``` file in ```php.ini ```.  It is located in  ``` xampp/php/ ```. 
+Add the following line : ``` extension=php_mongodb.dll ```.  
+Restart XAMPP.  
+For complementary information on how to install MongoDB on PHP for Xampp, see https://learnedia.com/install-mongodb-configure-php-xampp-windows/ .
+
+ #### 4. Setup Kajika within the XAMPP environment
+ Download the repository and unzip it in  ``` xampp/php/htdocs ```.  
+ Rename it ``` kajika ```.  
+ 
+ **Now Kajika is ready for use !**
+#### 5. 
  
  
  
