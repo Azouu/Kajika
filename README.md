@@ -15,7 +15,7 @@ Kajika currently has the following dependencies :
  Choose the 4.0 version and the MSI package, along with the OS that you use.
  Download the file and execute it. Select the checkbox "Install MongoDB Compass" when you are asked to.
  
- If you use Windows :
+ * **For Windows users :**  
  Navigate to the C Drive on your computer and create a new folder called data here.  
  Inside the data folder you just created, create another folder called db.
   ```
@@ -26,9 +26,9 @@ Kajika currently has the following dependencies :
   ```
   C:\Program Files\MongoDB\Server\4.0\bin\mongod.exe
   ```
-  Note : You can save this command in a .cmd file to launch MongoDB faster.
+  __Note : You can save this command in a .cmd file to launch MongoDB faster.__  
   
- If you use Linux :
+ * **For Linux users :**  
  Go to https://docs.mongodb.com/v3.2/administration/install-on-linux/ and choose one of the distributions.
  
 For more information on how to install MongoDB, go to https://docs.mongodb.com/v3.2/administration/install-community/ 
