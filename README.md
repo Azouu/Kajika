@@ -65,7 +65,8 @@ Within the Kajika folder, open `lib.php` with a text editor.
  ```
 If you have not enabled authentication on MongoDB, leave the array on the first line empty.  
 To enable authentication on MongoDB, see https://docs.mongodb.com/manual/tutorial/enable-authentication/ .  
-When it is done, change `lib.php` and replace the fields with the appropriate strings. Example :
+When it is done, change `lib.php` and replace the fields with the appropriate strings.  
+**Example :**
 ```php
 	require 'vendor/autoload.php'; 
 	$client = new MongoDB\Client('mongodb://localhost:27017',
@@ -76,7 +77,15 @@ When it is done, change `lib.php` and replace the fields with the appropriate st
 	]);
 	$database = $client->DBName; 
  ```
-Change the line `$database = $client->DBName;` by replacing *DBName* with the name of your defined MongoDB database.
+Don't forget to change the line `$database = $client->DBName;` by replacing *DBName* with the name of your defined MongoDB database.
+
+#### 6. Start using Kajika !
+First, Ensure that xampp and Apache are running.  
+Start MongoDB. Default on Windows is :
+  ```
+  C:\Program Files\MongoDB\Server\4.0\bin\mongod.exe
+  ```
+ Finally, open the browser and type in ``` http://localhost/kajika ```. You can now use the app !
 
  
  
