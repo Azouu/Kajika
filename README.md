@@ -4,8 +4,7 @@ Kajika is an open source web application that can be used to visualize networks 
 ## Getting started
   ### Prerequisites
 Kajika currently has the following dependencies :
-* MongoDB 4.0
-* MongoDB Compass
+* MongoDB 4.0 (NoSQL Database)
 * XAMPP 7.3.6 (Compatibility with Windows, Linux and Mac OS)
 
  ### Installation 
@@ -50,14 +49,22 @@ For complementary information on how to install MongoDB on PHP for Xampp, see ht
  Download the repository and unzip it in  ``` xampp/php/htdocs ```.  
  Rename it ``` kajika ```.  
  Ensure that Apache is started on Xampp.  
- Open your browser, type in ``` http://localhost/kajika ```.
- **Now Kajika is ready for use !**  
+ Open your browser, type in ``` http://localhost/kajika ```.  
  
 #### 5. Import your Adaptative Multi-Agent System (AMAS) on the MongoDB database
-If you use Java or Python for your AMAS, download one of the following drivers and follow the instructions :
+If you use Java or Python for your AMAS, download one of the following drivers and follow the instructions.
 * **Java driver** :  https://github.com/FlorentMouysset/Links2-javadriver .
-* **Python driver** : https://github.com/tanguyesteoule/links_pydriver .  
-Get the JSON file corresponding to your AMAS. Then open MongoDB Compass and click on "Connect" (we suppose you haven't enabled authentication mode since you have just downloaded MongoDB).
+* **Python driver** : https://github.com/tanguyesteoule/links_pydriver .   
+
+#### 6. Configure the connexion with the database 
+Within the Kajika folder, open `lib.php` with a text editor.  
+```
+	$client = new MongoDB\Client('mongodb://localhost:27017',[]);
+	$database = $client->DBName; 
+ ```
+If you have not enabled authentication on MongoDB, leave the array on ``` $client = new MongoDB\Client('mongodb://localhost:27017',[]) ``` empty.
+Change the line `$database = $client->DBName;` by replacing *DBName* with the name of your defined MongoDB database.
+
  
  
  
