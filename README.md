@@ -21,7 +21,7 @@ Kajika currently has the following dependencies :
   ```
   md C:\data\db
   ```
-   When you have done that, navigate to your MongoDB installation folder, then go to the bin folder and lauch mongod.exe.
+  To start a MongoDB service, navigate to your MongoDB installation folder, then go to the bin folder and lauch mongod.exe.
   If you have kept the default MongoDB path during the installation, you can execute this command in the command prompt 
   ```
   C:\Program Files\MongoDB\Server\4.0\bin\mongod.exe
@@ -31,7 +31,7 @@ Kajika currently has the following dependencies :
  * **For Linux users :**  
  Go to https://docs.mongodb.com/v3.2/administration/install-on-linux/ and choose one of the distributions.
  
-For more information on how to install MongoDB, go to https://docs.mongodb.com/v3.2/administration/install-community/ 
+For more information on how to install MongoDB, go to https://docs.mongodb.com/v3.2/administration/install-community/ .
  
  #### 2. Install XAMPP
  
