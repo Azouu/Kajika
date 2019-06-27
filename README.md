@@ -1,2 +1,1 @@
-# KajikAMAS_BDD
 # Kajika
