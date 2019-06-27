@@ -27,7 +27,7 @@ Kajika currently has the following dependencies :
   ```
   C:\Program Files\MongoDB\Server\4.0\bin\mongod.exe
   ```
- _**Note :** You can save this command in a ```.cmd``` file to launch MongoDB faster._
+>  You can save this command in a ```.cmd``` file to launch MongoDB faster.
   
  * **For Linux users :**  
  Go to https://docs.mongodb.com/v3.2/administration/install-on-linux/ and choose one of the distributions.
@@ -54,10 +54,10 @@ For complementary information on how to install MongoDB on PHP for Xampp, see ht
  **Now Kajika is ready for use !**  
  
 #### 5. Import your Adaptative Multi-Agent System (AMAS) on the MongoDB database
-If you use Java or Python for your AMAS, download one of the following drivers and follow the instructions on README.md :
+If you use Java or Python for your AMAS, download one of the following drivers and follow the instructions :
 * **Java driver** :  https://github.com/FlorentMouysset/Links2-javadriver .
 * **Python driver** : https://github.com/tanguyesteoule/links_pydriver .  
-Get the JSON file corresponding to your AMAS. Then open MongoDB Compass and click on "Authentication"
+Get the JSON file corresponding to your AMAS. Then open MongoDB Compass and click on "Connect" (we suppose you haven't enabled authentication mode since you have just downloaded MongoDB).
  
  
  
