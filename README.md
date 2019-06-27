@@ -80,8 +80,8 @@ When it is done, change `lib.php` and replace the fields with the appropriate st
 Don't forget to change the line `$database = $client->DBName;` by replacing *DBName* with the name of your defined MongoDB database.
 
 #### 6. Start using Kajika !
-First, Ensure that xampp and Apache are running.  
-Start MongoDB. Default on Windows is :
+First, ensure that Xampp and Apache are running then start MongoDB service on the command prompt.  
+**Reminder** : default on Windows is :
   ```
   C:\Program Files\MongoDB\Server\4.0\bin\mongod.exe
   ```
