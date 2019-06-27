@@ -59,10 +59,23 @@ If you use Java or Python for your AMAS, download one of the following drivers a
 #### 6. Configure the connexion with the database 
 Within the Kajika folder, open `lib.php` with a text editor.  
 ```
+	require 'vendor/autoload.php'; 
 	$client = new MongoDB\Client('mongodb://localhost:27017',[]);
 	$database = $client->DBName; 
  ```
-If you have not enabled authentication on MongoDB, leave the array on ``` $client = new MongoDB\Client('mongodb://localhost:27017',[]) ``` empty.
+If you have not enabled authentication on MongoDB, leave the array on the first line empty.  
+To enable authentication on MongoDB, see https://docs.mongodb.com/manual/tutorial/enable-authentication/ .  
+When it is done, change `lib.php` and replace the fields with the appropriate strings. Example :
+```
+	require 'vendor/autoload.php'; 
+	$client = new MongoDB\Client('mongodb://localhost:27017',
+	[ 
+	   'username' => 'root',
+	   'password' => '',
+	   'connectTimeoutMS' => 60000	
+	]);
+	$database = $client->DBName; 
+ ```
 Change the line `$database = $client->DBName;` by replacing *DBName* with the name of your defined MongoDB database.
 
  
