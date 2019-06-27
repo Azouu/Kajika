@@ -735,7 +735,7 @@ class Customizer {
 		if($.isNumeric(string)) {
 			return parseInt(string,10);
 		} else {
-			return string.replace(' ', '_');
+			return string.toString().replace(' ', '_');	
 		}
 	}
 
@@ -776,31 +776,39 @@ class Customizer {
 
 	static checkAttributeInput(input, experiment) {
 		var errorBox = $("#errorBox");
-		console.log(input.value);
-		var expression = input.value.split(" ");
-		if (! experiment.attributeExists(expression[0])) {
-			errorBox.append('Attribute not found <br>');
-		} else if (! ['lt', 'let', 'gt', 'get', 'neq', 'eq'].includes(expression[1])) {
-			errorBox.append('Incorrect operator <br>');
-		} else if (expression.length != 3) {
-			errorBox.append('Incorrect expression form');
-		} 
+		if (input.val() != '') {
+			var expression = input.val().split(" ");
+			 if (expression.length != 3) {
+				errorBox.append('Incorrect expression form <br>');
+				return false;
+			} else if (! experiment.attributeExists(expression[0]) ) {
+				errorBox.append('Attribute not found <br>');
+				return false;
+			} else if (! ['lt', 'let', 'gt', 'get', 'neq', 'eq'].includes(expression[1])) {
+				errorBox.append('Incorrect operator <br>');
+				return false;
+			} 
+		}
+		return true;
 	}
 
 	static checkIDInput(input, experiment) {
 		var errorBox = $("#errorBox");
-		if(! experiment.entityExists(input.value)) {
+		if(! experiment.entityExists(input.val()) && input.val() != '') {
+			console.log(input.val());
 			errorBox.append('ID not found <br>');
-
+			return false;
 		}
-		return experiment.entityExists(input.value);
+		return true;
 	}
 
 	static checkTypeInput(input, experiment) {
 		var errorBox = $("#errorBox");
-		if (! experiment.typeExists(input.value)) {
+		if (! experiment.typeExists(input.val()) && input.val() != '') {
 			errorBox.append('Type not found <br>');
+			return false;
 		} 
+		return true;
 	}
 
 }

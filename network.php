@@ -81,7 +81,7 @@
 				    	 <div class="controls" id="inputsID"> 
 				    	 	<form onsubmit="return false;" autocomplete="off">
 				                    <div class="entry input-group col-xs-3">
-				                        <input class="form-control" name="fields[]" type="text" onchange="Customizer.checkIDInput(this, experiment)"/>
+				                        <input class="form-control" name="fields[]" type="text"/>
 				                    	<span class="input-group-btn">
 				                            <button class="btn btn-success btn-add" type="button">
 				                                <i class="fas fa-plus"></i>
@@ -96,7 +96,7 @@
 				    	 <div class="controls" id="inputsType"> 
 				    	 	<form onsubmit="return false;" autocomplete="off">
 				                    <div class="entry input-group col-xs-3">
-				                        <input class="form-control" name="fields[]" type="text" onchange="Customizer.checkTypeInput(this, experiment)"/>
+				                        <input class="form-control" name="fields[]" type="text"/>
 				                    	<span class="input-group-btn">
 				                            <button class="btn btn-success btn-add" type="button">
 				                                <i class="fas fa-plus"></i>
@@ -124,7 +124,7 @@
 				    	 <div class="controls" id="inputsAttribute" > 
 				    	 		<form onsubmit="return false;" autocomplete="off">
 				                    <div class="entry input-group col-xs-3">
-				                        <input class="form-control" name="fields[]" type="text" onchange="Customizer.checkAttributeInput(this, experiment)"/>
+				                        <input class="form-control" name="fields[]" type="text"/>
 				                    	<span class="input-group-btn">
 				                            <button class="btn btn-success btn-add" type="button">
 				                                <i class="fas fa-plus"></i>
@@ -262,13 +262,13 @@
 
 	        //get the id of the 'control' class parent, which is either 'inputsID' or 'inputsType' or 'inputsAttribute'
 	        var idParent = $(this).parents('.controls').attr('id');
-	        var controlForm = $('#' + idParent + '.controls form:first'),
-	            currentEntry = $(this).parents('.entry:first');
-	          
-
+	        var controlForm = $('#' + idParent + '.controls form:first');
+	        var entries = $(this).parents('.entry');
+	        var currentEntry = $(entries[entries.length - 1]);
 
 	        if (currentEntry.children('input').val() != '') {
-	        	var newEntry = $(currentEntry.clone().val('')).appendTo(controlForm).val('');
+	        	var newEntry = currentEntry.clone().appendTo(controlForm);
+	        	$(newEntry).children('input').val('');
 
 	        newEntry.find('input').val('');
 	        controlForm.find('.entry:not(:last) .btn-add')
@@ -276,37 +276,42 @@
 	            .removeClass('btn-success').addClass('btn-danger')
 	            .html('<i class="fas fa-minus"></i>');
 	   			 }}).on('click', '.btn-remove', function(e)
-				    {
-						$(this).parents('.entry:first').remove();
-
+				    {	
+				    	var entries = $(this).parents('.entry');
+						 $(entries[entries.length - 1]).remove();
 						e.preventDefault();
 						return false;
 					});
 	});
 
 	function checkFilters() {
+		var refreshOK = true;
 		for (var entry of $('.entry')) {
 			var idParent = $(entry).parents('.controls').attr('id');
-			var refreshOK = true;
+			var input = $(entry).find('input');
+			console.log(input.val());
 			switch (idParent) {
 				case 'inputsID' :
-				 	if (entry.value != null && !Customizer.checkIDInput(entry, experiment)) {
-				 		refreshOK = false;
+				 	if (! Customizer.checkIDInput(input, experiment)) {
+				 		console.log('oui');
+				 		return false;		
 				 	}
 				break;
 				case 'inputsType' :
-					if (entry.value != null && !Customizer.checkTypeInput(entry, experiment)) {
-						refreshOK = false;
+					if (! Customizer.checkTypeInput(input, experiment)) {
+						console.log('non');
+						return false;
 					}
 				break;
 				case 'inputsAttribute' :
-					if (entry.value != null && !Customizer.checkAttributeInput(entry, experiment)) {
-						refreshOK = false;
+					if (! Customizer.checkAttributeInput(input, experiment)) {
+						console.log('pff');
+						return false;
 					}
+				break;
 			} 
-
 		}
-		return refreshOK
+		return true;
 	}
 
 
