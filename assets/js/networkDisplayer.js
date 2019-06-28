@@ -776,15 +776,19 @@ class Customizer {
 
 	static checkAttributeInput(input, experiment) {
 		var errorBox = $("#errorBox");
+
 		if (input.val() != '') {
 			var expression = input.val().split(" ");
 			 if (expression.length != 3) {
+			 	errorBox.addClass('alert alert-danger');
 				errorBox.append('Incorrect expression form <br>');
 				return false;
 			} else if (! experiment.attributeExists(expression[0]) ) {
+				errorBox.addClass('alert alert-danger');
 				errorBox.append('Attribute not found <br>');
 				return false;
 			} else if (! ['lt', 'let', 'gt', 'get', 'neq', 'eq'].includes(expression[1])) {
+				errorBox.addClass('alert alert-danger');
 				errorBox.append('Incorrect operator <br>');
 				return false;
 			} 
@@ -795,7 +799,7 @@ class Customizer {
 	static checkIDInput(input, experiment) {
 		var errorBox = $("#errorBox");
 		if(! experiment.entityExists(input.val()) && input.val() != '') {
-			console.log(input.val());
+			errorBox.addClass('alert alert-danger');
 			errorBox.append('ID not found <br>');
 			return false;
 		}
@@ -805,6 +809,7 @@ class Customizer {
 	static checkTypeInput(input, experiment) {
 		var errorBox = $("#errorBox");
 		if (! experiment.typeExists(input.val()) && input.val() != '') {
+			errorBox.addClass('alert alert-danger');
 			errorBox.append('Type not found <br>');
 			return false;
 		} 

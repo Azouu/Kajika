@@ -135,7 +135,7 @@
 				        </div>
 				        <div class="text-danger inputError mb-2" id="alarmAttribute"> </div>
 
-				        <div class="alert alert-danger" id="errorBox">
+				        <div class="" id="errorBox">
 				    		
 				        </div>
 				        <!-- Boutons pour appliquer ou enlever les options de filtrage -->
@@ -289,23 +289,19 @@
 		for (var entry of $('.entry')) {
 			var idParent = $(entry).parents('.controls').attr('id');
 			var input = $(entry).find('input');
-			console.log(input.val());
 			switch (idParent) {
 				case 'inputsID' :
 				 	if (! Customizer.checkIDInput(input, experiment)) {
-				 		console.log('oui');
 				 		return false;		
 				 	}
 				break;
 				case 'inputsType' :
 					if (! Customizer.checkTypeInput(input, experiment)) {
-						console.log('non');
 						return false;
 					}
 				break;
 				case 'inputsAttribute' :
 					if (! Customizer.checkAttributeInput(input, experiment)) {
-						console.log('pff');
 						return false;
 					}
 				break;
@@ -317,6 +313,7 @@
 
 	function reloadNetworkWithFilters() {
 		if (checkFilters()) {
+			$("#errorBox").removeClass('alert alert-danger');
 			$("#errorBox").html('');
 			var currentIndex = networkManager.currentIndex;
 			networkManager = new NetworkManager(experiment);
