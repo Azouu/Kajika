@@ -8,7 +8,8 @@
 				echo $database->$col->findOne()->experimentName; 
 			?> 
 	</title>
-	<script type="text/javascript" src="personnalisation.js"></script> 
+	<script type="text/javascript" src="customizationVariables.js"></script> 
+	<script type="text/javascript" src="config.js"> </script>
 	<?php require_once('dependencies.html'); ?>
 </head>
 
