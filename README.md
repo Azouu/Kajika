@@ -57,8 +57,8 @@ If you use Java or Python for your AMAS, download one of the following drivers a
 
 #### 6. Configure the connexion with the database 
 Within the `` kajika `` folder, open `lib.php` with a text editor.  
-Change the line 3 `$database = $client->DBName;` by replacing *DBName* with the name of your defined MongoDB database.
-If you have not enabled authentication on MongoDB, leave the array on the first line empty.
+Change the line  7 `$database = $client->DBName;` by replacing *DBName* with the name of your defined MongoDB database.
+If you have not enabled authentication on MongoDB, leave the array on line 5 empty.
 
 **Autentication enabled on mongoDB** :  
 If you want to enable authentication on MongoDB, see https://docs.mongodb.com/manual/tutorial/enable-authentication/ .  
