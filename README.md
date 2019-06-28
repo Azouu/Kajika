@@ -114,7 +114,24 @@ When toggling the "selection" button, you will only show the selected entities a
 FPS (Frame Per Second) : Change the speed of the player. Default is 1 FPS.
 
 * Entity filter
-You can filter the network to display only the entities that interest you. You can
+You can filter the network to display only the entities that interest you. 
+
+ ##### Network visual customization
+ 
+
+#### 3. Charts
+On the top right corner of the network page, you can access the charts. 
+
+# Built with
+
+# Contributing
+
+# Authors
+
+# License
+
+
+
 
 
 
