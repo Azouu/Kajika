@@ -75,7 +75,7 @@ If it is done, change `lib.php` and replace the fields with the appropriate stri
 	$database = $client->DBName; 
  ```
 #### 7. Start using Kajika !
-First, ensure that Xampp and Apache are running then start MongoDB service on the command prompt.  
+First, ensure that Apache on Xampp is running then start the MongoDB service on the command prompt.  
 **Reminder** default on Windows is :
   ```
   C:\"Program Files"\MongoDB\Server\4.0\bin\mongod.exe
@@ -99,6 +99,15 @@ Kajika is designed to focus on the visualization of the network. You can
 
 **Multi-selection information display** : You can display many entity/relation information at the same time. To do that, click on an entity while holding <kbd>CTRL</kbd>.
 
+
+ ##### Network visual customization
+In the `` kajika `` folder, open ` customizationVariables.js ` with a text editor.
+
+
+* How do I customize each experiment 
+
+ ##### Network player
+ 
  
  ##### Options panel
  Click on the "Options" button on the top right corner of the page to toggle the options panel.  
@@ -115,20 +124,17 @@ FPS (Frame Per Second) : Change the speed of the player. Default is 1 FPS.
 
 * Entity filter
 You can filter the network to display only the entities that interest you. 
-
- ##### Network visual customization
  
-
 #### 3. Charts
 On the top right corner of the network page, you can access the charts. 
 
-# Built with
+## Built with
 
-# Contributing
+## Contributing
 
-# Authors
+## Authors
 
-# License
+## License
 
 
 
