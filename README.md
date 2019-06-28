@@ -1,9 +1,10 @@
 # Kajika
 Kajika is an open source web application that can be used to visualize networks and charts. 
 
+
 ## Getting started
   ### Prerequisites
-Kajika currently has the following dependencies :
+Kajika has the following dependencies :
 * MongoDB 4.0 (NoSQL Database)
 * XAMPP 7.3.6 (Compatibility with Windows, Linux and Mac OS)
 
@@ -35,19 +36,17 @@ For more information on how to install MongoDB, go to https://docs.mongodb.com/v
  
  #### 2. Install XAMPP 7.3.6
  Go to https://www.apachefriends.org/download.html and get the installer for **PHP 7.3.6**.  
- Launch the installer and execute the instructions.
+Launch the installer and execute the instructions. If you get a warning message at the start of the installation about the User Account Control (UAC), just skip it. 
  
  #### 3. Get the MongoDB driver for XAMPP 
  When you are done with the XAMPP installation, go to https://pecl.php.net/package/mongodb/1.5.5/windows and download the PHP 7.3 Thread Safe package.  
- For the next sections, we suppose that you are already located in the xampp installation folder (``` C:\xampp ``` by default in Windows). Unzip the driver and put the ``` php_mongodb.dll ``` file in the `` xampp/php/ext `` folder.  
-Then, register the ``` php_mongodb.dll ``` file in ```php.ini ```.  It is located in  ``` xampp/php/ ```. 
-Add the following line : ``` extension=php_mongodb.dll ```.  
-Restart XAMPP (Apache).  
+Go to the xampp installation folder. Unzip the driver and put the ``` php_mongodb.dll ``` file in the `` xampp/php/ext `` folder.  
+Then, go to ``` xampp/php/ ``` and open ```php.ini ``` (it is a configuration file). Add the following line : ``` extension=php_mongodb.dll ```   
+Restart Apache on Xampp if it was already started.  
 For complementary information on how to install MongoDB on PHP for Xampp, see https://learnedia.com/install-mongodb-configure-php-xampp-windows/ .
 
  #### 4. Setup Kajika within the XAMPP environment
- Download the repository and unzip it in  ``` xampp/php/htdocs ```.  
- Rename it ``` kajika ```.  
+ Download the repository and unzip it in  ``` xampp/htdocs ``` or simply clone the git repository. Rename the folder ``` kajika ```.  
  Ensure that Apache is started on Xampp.  
  Open your browser, type in ``` http://localhost/kajika ```.  
  
@@ -57,37 +56,68 @@ If you use Java or Python for your AMAS, download one of the following drivers a
 * **Python driver** : https://github.com/tanguyesteoule/links_pydriver .   
 
 #### 6. Configure the connexion with the database 
-Within the Kajika folder, open `lib.php` with a text editor.  
-```php
-	require 'vendor/autoload.php'; 
-	$client = new MongoDB\Client('mongodb://localhost:27017',[]);
-	$database = $client->DBName; 
- ```
-If you have not enabled authentication on MongoDB, leave the array on the first line empty.  
-To enable authentication on MongoDB, see https://docs.mongodb.com/manual/tutorial/enable-authentication/ .  
-When it is done, change `lib.php` and replace the fields with the appropriate strings.  
+Within the `` kajika `` folder, open `lib.php` with a text editor.  
+Change the line 3 `$database = $client->DBName;` by replacing *DBName* with the name of your defined MongoDB database.
+If you have not enabled authentication on MongoDB, leave the array on the first line empty.
+
+**Autentication enabled on mongoDB** :  
+If you want to enable authentication on MongoDB, see https://docs.mongodb.com/manual/tutorial/enable-authentication/ .  
+If it is done, change `lib.php` and replace the fields with the appropriate strings.  
 **Example :**
 ```php
 	require 'vendor/autoload.php'; 
 	$client = new MongoDB\Client('mongodb://localhost:27017',
 	[ 
-	   'username' => 'root',
-	   'password' => '',
+	   'username' => 'a',
+	   'password' => 'b',
 	   'connectTimeoutMS' => 60000	
 	]);
 	$database = $client->DBName; 
  ```
-Don't forget to change the line `$database = $client->DBName;` by replacing *DBName* with the name of your defined MongoDB database.
-
-#### 6. Start using Kajika !
+#### 7. Start using Kajika !
 First, ensure that Xampp and Apache are running then start MongoDB service on the command prompt.  
-**Reminder** : default on Windows is :
+**Reminder** default on Windows is :
   ```
-  C:\Program Files\MongoDB\Server\4.0\bin\mongod.exe
+  C:\"Program Files"\MongoDB\Server\4.0\bin\mongod.exe
   ```
  Finally, open the browser and type in ``` http://localhost/kajika ```. You can now use the app !
 
  
+ ### How to use Kajika ?
+ #### 1. Experiment selection
+ Select "Experiments" on the left sidebar. 
+ > We suggest that you give each experiment a different name when you fill the MongoDB DB with the driver. That way, you won't have two items with the same name on the experiment list.
+ 
+ #### 2. Network visualization
+ Here is an example of the network visualization page. We will use it as an example through all the next sections.
+ 
+##### Information display 
+Kajika is designed to focus on the visualization of the network. You can
+**Experiment information** : Click on the title of the experiment to show a modal with the related information.
+**Entity information** :  Click on a node. On the left bottom side of the page, a modal with the related information will pop.
+**Relation information** :  Click on an edge. On the right bottom side of the page, a modal with the related information will pop. 
+
+**Multi-selection information display** : You can display many entity/relation information at the same time. To do that, click on an entity while holding <kbd>CTRL</kbd>.
+
+ 
+ ##### Options panel
+ Click on the "Options" button on the top right corner of the page to toggle the options panel.  
+* Network :  
+Physics : 
+When you move a node on the network, it will pull all the other connected nodes thanks to gravity models (physics).
+Physics are activated by default, but you can deactivate them. It can be useful to do this if you have too many entities and your network moves too much and doesn't get stabilized.
+
+Selection : 
+When toggling the "selection" button, you will only show the selected entities and their neighbors. You can select an entity or many by holding <kbd>CTRL</kbd> while clicking.
+
+* Player
+FPS (Frame Per Second) : Change the speed of the player. Default is 1 FPS.
+
+* Entity filter
+You can filter the network to display only the entities that interest you. You can
+
+
+
  
  
  
