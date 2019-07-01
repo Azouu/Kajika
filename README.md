@@ -98,7 +98,7 @@ Kajika is designed to focus on the visualization of the network. You can
 
  ##### Network visual customization
 
-See [CUSTOMIZATION.md](../blob/master/CUSTOMIZATION) for more details.
+See [CUSTOMIZATION.md](CUSTOMIZATION) for more details.
 
 
  ##### Options panel
