@@ -278,6 +278,19 @@ If agent1 verify all the criteria, it will be green because ID > attributeMap.
 However, for the other agents, if they validate either of the criteria related to the attributeMap, they will have a red border because the error is the last specified within the attributeMap object.
 Finally if an agent verify neither of the criteria except the one related to the type, it will be yellow.
 
+* What are the operators and the values we must supply for them ? 
+
+Here is a table with all the operators, their corresponding sign and the type of value you must supply.
+| Operator | Corresponding sign       | Value type |
+| :---------------: |:---------------:|:---------------:| 
+| lt  | < |  numeric value |
+| let  | <= |  numeric value |
+| gt  | > |  numeric value |
+| get  | >= |  numeric value |
+| eq | == |  numeric value |
+| neq | != |  numeric value |
+| between | ∈ |  array of 2 numeric values |
+
 * What about the options objects ? 
 
 * Customizing many experiments 
