@@ -1,7 +1,6 @@
 # Kajika
 Kajika is an open source web application that can be used to visualize networks and charts. 
 
-
 ## Getting started
   ### Prerequisites
 Kajika has the following dependencies :
@@ -74,6 +73,7 @@ If it is done, change `lib.php` and replace the fields with the appropriate stri
 	]);
 	$database = $client->DBName; 
  ```
+ 
 #### 7. Start using Kajika !
 First, ensure that Apache on Xampp is running then start the MongoDB service on the command prompt.  
 **Reminder** default on Windows is :
@@ -82,33 +82,27 @@ First, ensure that Apache on Xampp is running then start the MongoDB service on 
   ```
  Finally, open the browser and type in ``` http://localhost/kajika ```. You can now use the app !
 
- 
+
  ### How to use Kajika ?
  #### 1. Experiment selection
  Select "Experiments" on the left sidebar. 
  > We suggest that you give each experiment a different name when you fill the MongoDB DB with the driver. That way, you won't have two items with the same name on the experiment list.
  
- #### 2. Network visualization
- Here is an example of the network visualization page. We will use it as an example through all the next sections.
- 
+ #### 2. Network visualization 
 ##### Information display 
 Kajika is designed to focus on the visualization of the network. You can
 **Experiment information** : Click on the title of the experiment to show a modal with the related information.
 **Entity information** :  Click on a node. On the left bottom side of the page, a modal with the related information will pop.
 **Relation information** :  Click on an edge. On the right bottom side of the page, a modal with the related information will pop. 
-
 **Multi-selection information display** : You can display many entity/relation information at the same time. To do that, click on an entity while holding <kbd>CTRL</kbd>.
 
-
  ##### Network visual customization
-In the `` kajika `` folder, open ` customizationVariables.js ` with a text editor.
+
+See customization.md for more details.
 
 
-* How do I customize each experiment 
 
- ##### Network player
- 
- 
+
  ##### Options panel
  Click on the "Options" button on the top right corner of the page to toggle the options panel.  
 * Network :  
@@ -122,13 +116,42 @@ When toggling the "selection" button, you will only show the selected entities a
 * Player
 FPS (Frame Per Second) : Change the speed of the player. Default is 1 FPS.
 
-* Entity filter
+* Entity filter  
 You can filter the network to display only the entities that interest you. 
- 
+Important : for the "By attribute" filter.
+The expression must be in the form <attribute name> <operator> <value>. 
+You should have only 2 spaces in the expression, between each element.  
+Warning : the input is case sensitive ! 
+
+What are the operators ?  
+Hover on the `?` button next to the "By attribute" title to see the correspondances. 
+
+Example 1 : 
+I want to show all the agents that have a `criticality` < 80.
+In this case the expression would be : `criticality lt 80`.
+
+Example 2 : 
+Exceptionnal case : the value contains a space
+I want to show the agent that has the `name` `Agent 1`. But there is a problem : there is a space in this value. 
+In this case the expression would be : `name eq Agent_1`.
+> Replace each space with `_`.
+
+Example 3 :  
+I want to show all the agents except the one that has the `name`attribute equaling `Agent 1`.
+In this case the expression would be : `name neq Agent_1`.
+
 #### 3. Charts
-On the top right corner of the network page, you can access the charts. 
+Here you can see the evolution of numeric attributes.  
+When you check an attribute, you display its evolution for each agent that has it.  
+When you check an agent, you display the evolution of all its numeric attributes.  
+Click on an element of the legend to deactivate its corresponding trace, or double-click to isolate it.  
+You can hold the left mouse button while moving it to zoom on a specific place of the chart.  
+The charts are built with the plotly.js library. You can see https://plot.ly/javascript/ if you want more details.  
+
+> When you check a box in one of the two sections ("Attributes" or "Agents"), you automatically uncheck the boxes in the other.
 
 ## Built with
+
 
 ## Contributing
 
