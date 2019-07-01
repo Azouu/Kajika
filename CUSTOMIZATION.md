@@ -177,6 +177,7 @@ var defaultOptions = {
 }; 
 ```
 
+Example 3 : 
 You can combine all the examples we have shown above. We add that all the agents with the attribute `error < 0.5` have a red border.
  ```javascript 
 var defaultOptions = {
@@ -222,6 +223,70 @@ var defaultOptions = {
 }; 
 ```
 * What happens when many options overlap ?
-There will be many cases when an element will verify many criteria. The options specify can be different.
-In this case, the options of the same key that will be applied are the **LAST** that have been added to the object.
+There will be many cases when an element will verify many criteria. The options can overlap if you put the same keys in the options object. In this case, the **LAST** that have been added to the object will be applied.
 
+
+
+
+
+
+Priority orders : 
+In a "nodes" or "relations" value object, you can customize by ID (entityID or relationID), attribute value (attributeMap), or type.
+If you specify the same keys in the options object, the priority order for applying the options is :
+ID > attributeMap > type.
+
+Example 4:
+ ```javascript 
+var defaultOptions = {
+	nodes  : { 	
+		entityID : {
+			 agent1 : { 
+				 color : 'green'
+			 }
+		},
+		attributeMap : {
+			criticality : {
+				get : {
+					map : [
+						[ 80 , { color : 'blue' } ]
+					]
+				}
+			},
+			error : {
+				lt : {
+					map : [
+						[ 0.5, color : { border : 'red'} ]
+					]
+				}
+			}
+		},
+		type : {
+			type2 : { 
+				 color : 'yellow'
+			 }
+		}
+	},
+	relations : { 
+		relationID : {}, 
+		attributeMap : {},
+		type : {}, 
+	}
+}; 
+```
+In the example 4, we will use the `color` key in the options objects. 
+If agent1 verify all the criteria, it will be green because ID > attributeMap.
+However, for the other agents, if they validate either of the criteria related to the attributeMap, they will have a red border because the error is the last specified within the attributeMap object.
+Finally if an agent verify neither of the criteria except the one related to the type, it will be yellow.
+
+* What about the options objects ? 
+
+* Customizing many experiments 
+
+
+
+
+
+
+
+
+* Customization CHEAT SHEET : 
