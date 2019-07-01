@@ -1,7 +1,7 @@
 This section will explain how to customize the visual appearance of a network. 
 
 * Do I have to know web programming to customize my networks ?
-You don't have to know how to code in Javascript customize your network. You simply have to understand the concept of Javascript objects.
+You don't have to know how to code in Javascript customize your network. You simply have to understand the concept of Javascript objects. The options are based on the nodes and edges options of the vis.js library we use to create the network. 
 "An object is a collection of names or keys and values, represented in name:value pairs". It is basically like a HashMap in Java, but you can have any type of value. You can also have nested objects. 
 Example : simple objet
 ```javascript 
@@ -224,10 +224,6 @@ var defaultOptions = {
 ```
 * What happens when many options overlap ?
 There will be many cases when an element will verify many criteria. The options can overlap if you put the same keys in the options object. In this case, the **LAST** that have been added to the object will be applied.
-
-
-
-
 
 
 Priority orders : 
