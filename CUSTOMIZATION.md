@@ -56,7 +56,7 @@ You have a "nodes" and a "relations" key. You can customize each type of network
 var defaultOptions = {
 	nodes  : { 	
 		entityID : {
-       'agent1' : 
+       "agent1" : 
        { 
          color : 'green'
        }
