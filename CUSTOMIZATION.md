@@ -56,15 +56,14 @@ You have a "nodes" and a "relations" key. You can customize each type of network
 var defaultOptions = {
 	nodes  : { 	
 		entityID : {
-       "agent1" : 
-       { 
-         color : 'green'
-       }
-    },
+		       agent1 : { 
+			 color : 'green'
+		       }
+  	},
 		attributeMap : {},
 		type : {}
 	},
-	relations :	{ 
+	relations : { 
 		relationID : {}, 
 		attributeMap : {},
 		type : {}, 
@@ -72,5 +71,27 @@ var defaultOptions = {
 }; 
 ```
 * Customization by type 
-If you want to change the style of 
+If you want to change the style of all the entities that have a certain type, the method is the same as it is for the ID.
+Key : Type name
+Value : An Object with the options 
+Example : the relations with type `type1` are dashes.
+ ```javascript 
+var defaultOptions = {
+	nodes  : { 	
+		entityID : {}
+  	},
+		attributeMap : {},
+		type : {}
+	},
+	relations : { 
+		relationID : {}, 
+		attributeMap : {},
+		type : {
+			type1 : {
+				dashes : true
+			}
+		}, 
+	}
+}; 
+```
 
