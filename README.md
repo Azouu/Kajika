@@ -1,11 +1,12 @@
 # Kajika
 Kajika is an open source web application that can be used to visualize networks and charts. 
+It is used to visualize Multi-Agents Systems using networks.  
 
 ## Getting started
   ### Prerequisites
 Kajika has the following dependencies :
 * MongoDB 4.0 (NoSQL Database)
-* XAMPP 7.3.6 (Compatibility with Windows, Linux and Mac OS)
+* XAMPP 7.3.6 (Compatibility with Windows, Linux and Mac OS) or any Web Environment with a PHP interpreter.
 
  ### Installation 
  
@@ -98,7 +99,7 @@ Kajika is designed to focus on the visualization of the network. You can
 
  ##### Network visual customization
 
-See [CUSTOMIZATION.md](CUSTOMIZATION) for more details.
+See [CUSTOMIZATION.md](https://github.com/Azouu/Kajika/blob/master/CUSTOMIZATION.md) for more details.
 
 
  ##### Options panel
@@ -149,15 +150,26 @@ The charts are built with the plotly.js library. You can see https://plot.ly/jav
 > When you check a box in one of the two sections ("Attributes" or "Agents"), you automatically uncheck the boxes in the other.
 
 ## Built with
+* Vis.js 4.21.0
+* JQuery 
+* Bootsrap 4.3.1
+* Lodash
+* plotly.js 1.47.4
+* Font Awesome 5.0.13
 
+## Support 
+If you encounter a difficulty with Kajika, feel free to open an issue on this repository.  
+You can also send me an email on lhdj.ines@gmail.com  
 
 ## Contributing
-
+If you want to contribute to the growth of Kajika, feel free to send a pull request and ideally an email specifying what you want to add to the app.
+See [CONTRIBUTION.md](https://github.com/Azouu/Kajika/blob/master/CONTRIBUTION.md) to get more information on the structure of the app.  
 ## Authors
+The app was made during the internship of Inès Louahadj under the supervision of Tanguy Esteoule and Carole Bernon, team members of SMAC (IRIT), between April and July 2019. 
 
 ## License
 
-
+## Project status
 
 
 
