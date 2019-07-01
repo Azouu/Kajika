@@ -58,8 +58,8 @@ var defaultOptions = {
 		entityID : {
 		       agent1 : { 
 			 color : 'green'
-		       }
-  	},
+			 }
+  		},
 		attributeMap : {},
 		type : {}
 	},
@@ -78,8 +78,7 @@ Example : the relations with type `type1` are dashes.
  ```javascript 
 var defaultOptions = {
 	nodes  : { 	
-		entityID : {}
-  	},
+		entityID : {},
 		attributeMap : {},
 		type : {}
 	},
@@ -94,4 +93,135 @@ var defaultOptions = {
 	}
 }; 
 ```
+
+* Customization by attribute 
+
+If you want to change the style of all the entities that verify a certain expression dependi, the structure of the nested objects are different.
+Key : Attribute name
+Value : An Object with the following structure  
+ ```javascript
+ <attributeName> : {
+	<operator1> : {
+		map : [
+			[ <value1> , <optionsObject1> ],
+			[ <value2> , <optionsObject2> ]
+		]
+	}
+}
+```
+
+When you want to apply the options only if specific elements verify the experiences, you can supply an array of IDs : 
+ ```javascript
+ <attributeName> : {
+	<operator1> : {
+		id : [ 'ID1', 'ID2' ],
+		map : [
+			[ <value1> , <optionsObject1> ],
+			[ <value2> , <optionsObject2> ]
+		]
+	}
+}
+```
+Warning : if you specify an empty id array, the option will never be applied. 
+
+Example 1 : the entities with a `criticality >= 80 ` are squared-shaped.
+
+ ```javascript 
+var defaultOptions = {
+	nodes  : { 	
+		entityID : {},
+		attributeMap : {
+			criticality : {
+				get : {
+					map : [
+						[ 80 , { shape : 'square' } ]
+					]
+				}
+				
+			}
+		},
+		type : {}
+	},
+	relations : { 
+		relationID : {}, 
+		attributeMap : {},
+		type : {}, 
+	}
+}; 
+```
+
+Example 2 : If the entities with the ID `agent1`or `agent2` verify the expression `criticality == 0 `, then their size will be 50.
+
+ ```javascript 
+var defaultOptions = {
+	nodes  : { 	
+		entityID : {},
+		attributeMap : {
+			criticality : {
+				eq : {
+					id : ['agent1', 'agent2'],
+					map : [
+						[ 0 , { size : 50 } ]
+					]
+				}
+				
+			}
+		},
+		type : {}
+	},
+	relations : { 
+		relationID : {}, 
+		attributeMap : {},
+		type : {}, 
+	}
+}; 
+```
+
+You can combine all the examples we have shown above. We add that all the agents with the attribute `error < 0.5` have a red border.
+ ```javascript 
+var defaultOptions = {
+	nodes  : { 	
+		entityID : {
+			 agent1 : { 
+				 color : 'green'
+			 }
+		},
+		attributeMap : {
+			criticality : {
+				get : {
+					map : [
+						[ 80 , { shape : 'square' } ]
+					]
+				},
+				eq : {
+					id : ['agent1', 'agent2'],
+					map : [
+						[ 0 , { size : 50 } ]
+					]
+				}	
+			},
+			error : {
+				lt : {
+					map : [
+						[ 0.5, color : { border : 'red'} ]
+					]
+				}
+			}
+		},
+		type : {}
+	},
+	relations : { 
+		relationID : {}, 
+		attributeMap : {},
+		type : {
+			type1 : {
+					dashes : true
+				}
+		}, 
+	}
+}; 
+```
+* What happens when many options overlap ?
+There will be many cases when an element will verify many criteria. The options specify can be different.
+In this case, the options of the same key that will be applied are the **LAST** that have been added to the object.
 
