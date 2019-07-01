@@ -233,7 +233,7 @@ There will be many cases when an element will verify many criteria. The options 
 Priority orders : 
 In a "nodes" or "relations" value object, you can customize by ID (entityID or relationID), attribute value (attributeMap), or type.
 If you specify the same keys in the options object, the priority order for applying the options is :
-ID > attributeMap > type.
+ID > attributeMap > type. If 2 or more criteria are verified in the attributeMap sub-object, the last that is specified is proritary.
 
 Example 4:
  ```javascript 
@@ -280,8 +280,9 @@ Finally if an agent verify neither of the criteria except the one related to the
 
 * What are the operators and the values we must supply for them ? 
 
-Here is a table with all the operators, their corresponding sign and the type of value you must supply.
-| Operator | Corresponding sign       | Value type |
+Here is a table with all the operators, their corresponding sign and the type of value you must supply.  
+
+| Operator | Corresponding sign  | Value type |
 | :---------------: |:---------------:|:---------------:| 
 | lt  | < |  numeric value |
 | let  | <= |  numeric value |
@@ -292,14 +293,20 @@ Here is a table with all the operators, their corresponding sign and the type of
 | between | ∈ |  array of 2 numeric values |
 
 * What about the options objects ? 
+The options object are dependent on the vis.js library. You will find many more options if you see https://visjs.org/docs/network/nodes.html and https://visjs.org/docs/network/edges.html .
 
 * Customizing many experiments 
+In the `kajika` folder, open `config.js`.
+In this file, you will find the `customizationOptionsMap` object.
+Each key is the name of the experiment. The corresponding value is the customization variable specified in `customizationVariables.js`.
 
+Example : 
+```javascript 
+var customizationOptionsMap = {
+	"ExperimentName1" : experimentOptions,
+};
+```
+`experimentOptions` references the variable experimentOptions in `customizationVariables.js`.
+Default customization variable is `defaultOptions`. If you supply a wrong variable in the map or if you don't specify any variable for that experiment name, `defaultOptions` will be applied.
+You mustn't remove the defaultOptions variable of `customizationVariables.js`.
 
-
-
-
-
-
-
-* Customization CHEAT SHEET : 
