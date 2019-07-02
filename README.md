@@ -2,6 +2,21 @@
 Kajika is an open source web application that can be used to visualize networks and charts. 
 It is used to visualize Multi-Agents Systems using networks.  
 
+# Table of contents
+1. [Gettin started](#introduction)
+2. [Some paragraph](#paragraph1)
+    1. [Sub paragraph](#subparagraph1)
+3. [Another paragraph](#paragraph2)
+1. [Introduction](#introduction)
+2. [Some paragraph](#paragraph1)
+    1. [Sub paragraph](#subparagraph1)
+3. [Another paragraph](#paragraph2)
+1. [Introduction](#introduction)
+2. [Some paragraph](#paragraph1)
+    1. [Sub paragraph](#subparagraph1)
+3. [Another paragraph](#paragraph2)
+
+
 ## Getting started
   ### Prerequisites
 Kajika has the following dependencies :
@@ -84,12 +99,12 @@ First, ensure that Apache on Xampp is running then start the MongoDB service on 
  Finally, open the browser and type in ``` http://localhost/kajika ```. You can now use the app !
 
 
- ### How to use Kajika ?
- #### 1. Experiment selection
+ ## How to use Kajika ?
+ ### 1. Experiment selection
  Select "Experiments" on the left sidebar. 
  > We suggest that you give each experiment a different name when you fill the MongoDB DB with the driver. That way, you won't have two items with the same name on the experiment list.
  
- #### 2. Network visualization 
+ ### 2. Network visualization 
  **IMPORTANT : if your network doesn't show or there is an error, refresh the page with** <kbd>CTRL</kbd> + <kbd>F5</kbd>
 ##### Information display 
 Kajika is designed to focus on the visualization of the network. You can hide/show information boxes about various elements as it suits you best.  
@@ -98,14 +113,14 @@ Kajika is designed to focus on the visualization of the network. You can hide/sh
 * **Relation information** :  Click on an edge. On the right bottom side of the page, a modal with the related information will pop.   
 * **Multi-selection information display** : You can display many entity/relation information at the same time. To do that, click on an entity while holding <kbd>CTRL</kbd>.  
 
- ##### Network visual customization
+ #### Network visual customization
 
 See [CUSTOMIZATION.md](https://github.com/Azouu/Kajika/blob/master/CUSTOMIZATION.md) for more details.
 
 
- ##### Options panel
+ #### Options panel
  Click on the "Options" button on the top right corner of the page to toggle the options panel.  
- ###### **Network** 
+ ##### **Network** 
 * **Physics**   
 When you move a node on the network, it will pull all the other connected nodes thanks to gravity models (physics).
 Physics are activated by default, but you can deactivate them. It can be useful to do this if you have too many entities and your network moves too much and doesn't get stabilized.
@@ -113,11 +128,11 @@ Physics are activated by default, but you can deactivate them. It can be useful 
 * **Selection**
 When toggling the "selection" button, you will only show the selected entities and their neighbors. You can select an entity or many by holding <kbd>CTRL</kbd> while clicking.
 
- ###### Player
+ ##### Player
 * **FPS (Frame Per Second)**  
 Change the speed of the player. Default is 1 FPS.
 
- ###### Entity filter  
+ ##### Entity filter  
 You can filter the network to display only the entities that interest you. 
 **IMPORTANT** concerning the "By attribute" filter.
 **The expression must be in the form** <attribute name> <operator> <value>. 
@@ -142,7 +157,7 @@ Example 3 :
 I want to show all the agents except the one that has the `name`attribute equaling `Agent 1`.
 In this case the expression would be : `name neq Agent_1`.
 
-#### 3. Charts
+### 3. Charts
 Here you can see the evolution of numeric attributes.  
 When you check an attribute, you display its evolution for each agent that has it.  
 When you check an agent, you display the evolution of all its numeric attributes.  
@@ -152,7 +167,7 @@ Click on an element of the legend to deactivate its corresponding trace, or doub
 You can hold the left mouse button while moving it to zoom on a specific place of the chart.   
 The charts are built with the plotly.js library. You can see https://plot.ly/javascript/ if you want more details.   
 
-## Built with
+# Built with
 * Vis.js 4.21.0
 * JQuery 
 * Bootsrap 4.3.1
@@ -160,19 +175,19 @@ The charts are built with the plotly.js library. You can see https://plot.ly/jav
 * plotly.js 1.47.4
 * Font Awesome 5.0.13
 
-## Support 
+# Support 
 If you encounter a difficulty with Kajika, feel free to open an issue on this repository.  
 You can also send me an email on lhdj.ines@gmail.com  
 
-## Contributing
+# Contributing
 If you want to contribute to the growth of Kajika, feel free to send a pull request and ideally an email specifying what you want to add to the app.  
 See [CONTRIBUTION.md](https://github.com/Azouu/Kajika/blob/master/CONTRIBUTION.md) to get more information on the structure of the app.  
-## Authors
+# Authors
 The app was made during the internship of Inès Louahadj under the supervision of Tanguy Esteoule and Carole Bernon, team members of SMAC (IRIT), between April and July 2019. 
 
-## License
+# License
 
-## Project status
+# Project status
 
 
 
