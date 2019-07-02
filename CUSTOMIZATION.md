@@ -78,7 +78,7 @@ var defaultOptions = {
 If you want to change the style of all the entities that have a specific type, the method is the same as the ID. Go in **nodes -> type** or **relations -> type** .
 * **Key** : type name.  
 * **Value** : an object with the options.  
-##### Example : the relations of type `type1` are dashes.
+##### Example 4: the relations of type `type1` are dashes.
  ```javascript 
 var defaultOptions = {
 	nodes  : { 	
@@ -111,7 +111,10 @@ If you want to change the style of all the entities/relations that verify a cert
 		]
 	}
 }
-```
+``` 
+* For the syntax of the operator, see the table below.   
+* You should always have a `map` attributre in **nodes -> attributeMap -> attributeName -> operator1** or **relations -> attributeMap -> attributeName -> operator1** .  
+* `map`is an 2D array. On each line there is an array. The first index is the value you set for your expression, and the second index is an object with the options.
 
 When you want to apply the options only if specific elements verify the experiences, you can supply an array of IDs : 
  ```javascript
@@ -127,7 +130,26 @@ When you want to apply the options only if specific elements verify the experien
 ```
 _**Warning : if you specify an empty array of IDs, the options will never be applied.**_
 
-##### Example 1 : the entities with an attribute `criticality >= 80 ` are squared-shaped.
+##### Operators to write expressions
+In the "Customization by attribute" section, we have seen that we need operators to write expressions. We need them as **keys** in **nodes -> attributeMap -> "attributeName"** or **relations -> attributeMap -> "attributeName"**
+Here is a table with all the operators, their corresponding sign and the type of value you must supply in **nodes -> attributeMap -> "attributeName" -> "operator" -> map[i][0]** .  
+
+| Operator | Corresponding sign  | Value type |
+| :---------------: |:---------------:|:---------------:| 
+| lt  | < |  numeric value |
+| let  | <= |  numeric value |
+| gt  | > |  numeric value |
+| get  | >= |  numeric value |
+| eq | == |  numeric value |
+| neq | != |  numeric value |
+| between | ∈ |  array of 2 numeric values |
+
+#### The options object 
+The options object are dependent on the vis.js library. You will find many more options if you see https://visjs.org/docs/network/nodes.html and https://visjs.org/docs/network/edges.html .
+The **Name** column in the table references one of the many keys you can have in an options object. You can sometimes find nested objects (When the **Name** has a dropdown arrow).  
+If you want to have concrete examples on how to use these options, see the **full options** section of the vis.js nodes and edges documentation (links above).
+
+##### Example 5: the entities with an attribute `criticality >= 80 ` are squared-shaped.
 
  ```javascript 
 var defaultOptions = {
@@ -135,6 +157,7 @@ var defaultOptions = {
 		entityID : {},
 		attributeMap : {
 			criticality : {
+				// get (greater or equal then) 
 				get : {
 					map : [
 						[ 80 , { shape : 'square' } ]
@@ -153,7 +176,7 @@ var defaultOptions = {
 }; 
 ```
 
-##### Example 2 : If the entities with the ID `agent1`or `agent2` verify the expression `criticality == 0 `, then their size will be 50.
+##### Example 6: If the entities with the ID `agent1`or `agent2` verify the expression `criticality == 0 `, then their size will be 50.
  ```javascript 
 var defaultOptions = {
 	nodes  : { 	
@@ -179,7 +202,7 @@ var defaultOptions = {
 }; 
 ```
 
-##### Example 3 : Combination of all the examples
+##### Example 7: Combination of all the examples
 You can combine all the examples we have shown above. We add that all the agents with the attribute `error < 0.5` have a red border.
  ```javascript 
 var defaultOptions = {
@@ -233,7 +256,7 @@ If you specify similar keys in the options object, the priority order for applyi
 **ID > attributeMap > type**.  
 However, if 2 or more criteria are verified in the attributeMap sub-object, the **last** is proritary.
 
-###### Example 4: Priority orders for applying the `color` option
+###### Example 8: Priority orders for applying the `color` option
  ```javascript 
 var defaultOptions = {
 	nodes  : { 	
@@ -272,29 +295,10 @@ var defaultOptions = {
 	}
 }; 
 ```
-In the example 4, for all the criteria that are verified we apply a `color`option.  
+In the example 8, for all the criteria that are verified we apply a `color`option.  
 If `agent1` verify all the criteria, it will be **green** because **ID > attributeMap.**  
 However, for the other agents, if they validate either of the criteria related to the attributeMap, they will have a **red border** because the error is the last specified within the attributeMap object.
 Finally if an agent verify neither of the criteria except the one related to the type, it will be **yellow**.
-
-##### Operators to write expressions
-In the "Customization by attribute" section, we have seen that we need operators to write expressions. We need them as **keys** in **nodes -> attributeMap -> "attributeName"** or **relations -> attributeMap -> "attributeName"**
-Here is a table with all the operators, their corresponding sign and the type of value you must supply in **nodes -> attributeMap -> "attributeName" -> "operator" -> map[i][0]** .  
-
-| Operator | Corresponding sign  | Value type |
-| :---------------: |:---------------:|:---------------:| 
-| lt  | < |  numeric value |
-| let  | <= |  numeric value |
-| gt  | > |  numeric value |
-| get  | >= |  numeric value |
-| eq | == |  numeric value |
-| neq | != |  numeric value |
-| between | ∈ |  array of 2 numeric values |
-
-#### The options object 
-The options object are dependent on the vis.js library. You will find many more options if you see https://visjs.org/docs/network/nodes.html and https://visjs.org/docs/network/edges.html .
-The **Name** column in the table references one of the many keys you can have in an options object. You can sometimes find nested objects (When the **Name** has a dropdown arrow).  
-If you want to have concrete examples on how to use these options, see the **full options** section of the vis.js nodes and edges documentation (links above).
 
 #### Customizing many experiments separately
 In the `kajika` folder, open `config.js`.  
