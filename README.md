@@ -3,18 +3,25 @@ Kajika is an open source web application that can be used to visualize networks 
 It is used to visualize Multi-Agents Systems using networks.  
 
 # Table of contents
-1. [Gettin started](#introduction)
-2. [Some paragraph](#paragraph1)
-    1. [Sub paragraph](#subparagraph1)
-3. [Another paragraph](#paragraph2)
-1. [Introduction](#introduction)
-2. [Some paragraph](#paragraph1)
-    1. [Sub paragraph](#subparagraph1)
-3. [Another paragraph](#paragraph2)
-1. [Introduction](#introduction)
-2. [Some paragraph](#paragraph1)
-    1. [Sub paragraph](#subparagraph1)
-3. [Another paragraph](#paragraph2)
+[Getting started](#getting-started)
+	[Prerequisites](#prerequisites)
+	[Installation](#installation)
+[Guide](#guide)
+ 	[Experiment selection](#1-experiment-selection)
+	[Network visualization](#2-network-visualization)
+		[Information display](#information-display)
+		[Network visual customization](#network-visual-customization)
+		[Options panel](#options-panel)
+			[Network](#network)
+			[Player](#player)
+			[Entity filter](#entity-filter)
+	[Charts](#3-charts)
+[Built with](#built-with)
+[Support](#support)
+[Contributing](#contributing)
+[Authors](#authors)
+[License](#license)
+[Project status](#project-status)
 
 
 # Getting started
@@ -99,7 +106,7 @@ First, ensure that Apache on Xampp is running then start the MongoDB service on 
  Finally, open the browser and type in ``` http://localhost/kajika ```. You can now use the app !
 
 
- # Guide ?
+ # Guide 
  ## 1. Experiment selection
  Select "Experiments" on the left sidebar. 
  > We suggest that you give each experiment a different name when you fill the MongoDB DB with the driver. That way, you won't have two items with the same name on the experiment list.
@@ -125,7 +132,7 @@ See [CUSTOMIZATION.md](https://github.com/Azouu/Kajika/blob/master/CUSTOMIZATION
 When you move a node on the network, it will pull all the other connected nodes thanks to gravity models (physics).
 Physics are activated by default, but you can deactivate them. It can be useful to do this if you have too many entities and your network moves too much and doesn't get stabilized.
 
-* **Selection**
+* **Selection**  
 When toggling the "selection" button, you will only show the selected entities and their neighbors. You can select an entity or many by holding <kbd>CTRL</kbd> while clicking.
 
  #### Player
