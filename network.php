@@ -22,8 +22,8 @@
 				                    '<div class="entry input-group col-xs-3">' .
 				                       '<input class="form-control" name="fields[]" type="text" onchange="Customizer.checkTypeInput(this, experiment)"/>' . 
 				                    	'<span class="input-group-btn">' . 
-				                            '<button class="btn btn-success btn-add" type="button">' .
-				                                '<i class="fas fa-plus"></i>' . 
+				                            '<button class="btn btn-danger btn-remove" type="button">'.
+				                                '<i class="fas fa-minus"></i>'.
 				                            '</button>' .
 				                        '</span>' .	                  
 				                '</div>' . 
@@ -84,31 +84,39 @@
 				                    <div class="entry input-group col-xs-3">
 				                        <input class="form-control" name="fields[]" type="text"/>
 				                    	<span class="input-group-btn">
-				                            <button class="btn btn-success btn-add" type="button">
-				                                <i class="fas fa-plus"></i>
+				                            <button class="btn btn-danger btn-remove" type="button">
+				                                <i class="fas fa-minus"></i>
 				                            </button>
 				                        </span>
 				                    </div>
 				   			</form>
+				   			<button class="btn btn-success btn-add" type="button">
+				            	<i class="fas fa-plus"></i> Add input
+				        	</button>
 				        </div>
-				        <div class="text-danger inputError  mb-2" id="alarmID"> </div>
 
-				    	 <p> By type </p>
+				        <br>
+
+				    	 <label> By type </label> 
 				    	 <div class="controls" id="inputsType"> 
 				    	 	<form onsubmit="return false;" autocomplete="off">
 				                    <div class="entry input-group col-xs-3">
 				                        <input class="form-control" name="fields[]" type="text"/>
 				                    	<span class="input-group-btn">
-				                            <button class="btn btn-success btn-add" type="button">
-				                                <i class="fas fa-plus"></i>
+				                            <button class="btn btn-danger btn-remove" type="button">
+				                                <i class="fas fa-minus"></i>
 				                            </button>
 				                        </span>		                  
 				                </div>
 				            </form>
+				            <button class="btn btn-success btn-add" type="button">
+				            	<i class="fas fa-plus"></i> Add input
+				      	    </button>
 				        </div>
-				        <div class="text-danger inputError  mb-2" id="alarmType"> </div>
+				         
+						<br>
 
-					     <p class="d-inline-block"> By attribute </p>
+					    <label class="d-inline-block"> By attribute </label>
 					    <button class="d-inline-block btn btn-light" data-toggle="popover" data-trigger="hover" data-html="true" data-placement="top" title="Operators" 
 					   	data-content="[attribute name] [operator] [value] <br>
 					   		<b> Operators  </b>: <br>
@@ -119,22 +127,23 @@
 					   		eq : == <br>
 					   		neq : !=" > 
 					    	 	<i class="fas fa-question-circle"></i> 
-					    </button>
-				
-
+					    </button>	
 				    	 <div class="controls" id="inputsAttribute" > 
 				    	 		<form onsubmit="return false;" autocomplete="off">
 				                    <div class="entry input-group col-xs-3">
 				                        <input class="form-control" name="fields[]" type="text"/>
 				                    	<span class="input-group-btn">
-				                            <button class="btn btn-success btn-add" type="button">
-				                                <i class="fas fa-plus"></i>
+				                            <button class="btn btn-danger btn-remove" type="button">
+				                                <i class="fas fa-minus"></i>
 				                            </button>
 				                        </span> 
 				                    </div>
 				                </form>  
+				            <button class="btn btn-success btn-add" type="button">
+				            	<i class="fas fa-plus"></i> Add input
+				        	 </button>
 				        </div>
-				        <div class="text-danger inputError mb-2" id="alarmAttribute"> </div>
+				      <br>
 
 				        <div class="" id="errorBox">
 				    		
@@ -254,36 +263,33 @@
 
 	
 
-
-	$(function()
-	{
-	    $(document).on('click', '.btn-add', function(e)
-	    {
-	        e.preventDefault();
-
-	        //get the id of the 'control' class parent, which is either 'inputsID' or 'inputsType' or 'inputsAttribute'
-	        var idParent = $(this).parents('.controls').attr('id');
-	        var controlForm = $('#' + idParent + '.controls form:first');
-	        var entries = $(this).parents('.entry');
+	// onclick events of the buttons in the "Entity filter" compartment of the options panel
+	$(function() {
+	    $(document).on('click', '.btn-add', function(e) {
+	        var idParent = $(this).parents('.controls').attr('id');  //get the id of the 'control' class parent, which is either 'inputsID' or 'inputsType' or 'inputsAttribute'
+	        var controlForm = $('#' + idParent + ' form');
+	        var entries = $('#' + idParent + ' form .entry');
 	        var currentEntry = $(entries[entries.length - 1]);
-
 	        if (currentEntry.children('input').val() != '') {
 	        	var newEntry = currentEntry.clone().appendTo(controlForm);
 	        	$(newEntry).children('input').val('');
+	  		}
+	  	});
 
-	        newEntry.find('input').val('');
-	        controlForm.find('.entry:not(:last) .btn-add')
-	            .removeClass('btn-add').addClass('btn-remove')
-	            .removeClass('btn-success').addClass('btn-danger')
-	            .html('<i class="fas fa-minus"></i>');
-	   			 }}).on('click', '.btn-remove', function(e)
-				    {	
-				    	var entries = $(this).parents('.entry');
-						 $(entries[entries.length - 1]).remove();
-						e.preventDefault();
-						return false;
-					});
+	   	$(document).on('click', '.btn-remove', function(e) {	
+			var idParentControls = $(this).parents('.controls').attr('id');
+	        var nbEntries = $('#' + idParentControls + ' form .entry').length;
+	        var currentEntry = $(this).parents('.entry');
+			// don't allow to remove an entry if there is only one in the form
+			if (nbEntries > 1) {
+				$(currentEntry).remove();
+			} else { //If there is only one entry, we empty its input
+				$(currentEntry).children('input').val('');
+			} 
+		});
 	});
+
+
 
 	function checkFilters() {
 		var refreshOK = true;
@@ -328,7 +334,7 @@
 		for (var inputsID of inputsIDsArray) {
 			var inputsGroupArray = inputsID + ' form';
 			$(inputsGroupArray).remove();
-			$(inputsID).append('<?php echo $filterEntryModel ?>');
+			$(inputsID).prepend('<?php echo $filterEntryModel ?>');
 		}
 		reloadNetworkWithFilters(networkManager, experiment);
 	}

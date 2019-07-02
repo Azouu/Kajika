@@ -77,8 +77,13 @@
     display: none;
 }
 
- .fa-plus, .fa-minus {
+.fa-minus {
   font-size: 1.5em;
+}
+
+
+.btn-add {
+  font-size: 0.9rem !important;
 }
 /**************************** PLAYER **********************/
 /**************************** PLAYER **********************/
@@ -221,4 +226,5 @@
 #about a:hover {
   text-decoration: none;
 }
+
 
