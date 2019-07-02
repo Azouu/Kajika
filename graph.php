@@ -214,13 +214,15 @@
 
 		var graph_container = document.getElementById("graph-container");
 		var layout = {
+			automargin : true,
 			xaxis : { title : "snapshot number"} ,
-			margin : { t : 10 }
+			margin : { t : 100 }
 		};
 		var config = {
+			autosize : true,
 		  toImageButtonOptions: {
 		    format: 'png', // one of png, svg, jpeg, webp
-		    filename: 'agent_plot',
+		    filename: 'amas_plot',
 		    height: 1000,
 		    width: 1400,
 		    scale: 1 // Multiply title/legend/axis/canvas sizes by this factor

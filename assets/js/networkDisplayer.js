@@ -776,7 +776,6 @@ class Customizer {
 
 	static checkAttributeInput(input, experiment) {
 		var errorBox = $("#errorBox");
-
 		if (input.val() != '') {
 			var expression = input.val().split(" ");
 			 if (expression.length != 3) {
