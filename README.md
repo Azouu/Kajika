@@ -105,32 +105,34 @@ See [CUSTOMIZATION.md](https://github.com/Azouu/Kajika/blob/master/CUSTOMIZATION
 
  ##### Options panel
  Click on the "Options" button on the top right corner of the page to toggle the options panel.  
-* Network :  
-Physics : 
+ ###### **Network** 
+* **Physics**   
 When you move a node on the network, it will pull all the other connected nodes thanks to gravity models (physics).
 Physics are activated by default, but you can deactivate them. It can be useful to do this if you have too many entities and your network moves too much and doesn't get stabilized.
 
-Selection : 
+* **Selection**
 When toggling the "selection" button, you will only show the selected entities and their neighbors. You can select an entity or many by holding <kbd>CTRL</kbd> while clicking.
 
-* Player
-FPS (Frame Per Second) : Change the speed of the player. Default is 1 FPS.
+ ###### Player
+* **FPS (Frame Per Second)**  
+Change the speed of the player. Default is 1 FPS.
 
-* Entity filter  
+ ###### Entity filter  
 You can filter the network to display only the entities that interest you. 
-Important : for the "By attribute" filter.
-The expression must be in the form <attribute name> <operator> <value>. 
-You should have only 2 spaces in the expression, between each element.  
-Warning : the input is case sensitive ! 
+**IMPORTANT** concerning the "By attribute" filter.
+**The expression must be in the form** <attribute name> <operator> <value>. 
+	
+**You should have only 2 spaces in the expression, between each element.**   
+**The input is case sensitive ! **
 
-What are the operators ?  
+* **Operators label**
 Hover on the `?` button next to the "By attribute" title to see the correspondances. 
 
-Example 1 : 
+Example 1 :   
 I want to show all the agents that have a `criticality` < 80.
 In this case the expression would be : `criticality lt 80`.
 
-Example 2 : 
+Example 2 :   
 Exceptionnal case : the value contains a space
 I want to show the agent that has the `name` `Agent 1`. But there is a problem : there is a space in this value. 
 In this case the expression would be : `name eq Agent_1`.
@@ -144,11 +146,11 @@ In this case the expression would be : `name neq Agent_1`.
 Here you can see the evolution of numeric attributes.  
 When you check an attribute, you display its evolution for each agent that has it.  
 When you check an agent, you display the evolution of all its numeric attributes.  
-Click on an element of the legend to deactivate its corresponding trace, or double-click to isolate it.  
-You can hold the left mouse button while moving it to zoom on a specific place of the chart.  
-The charts are built with the plotly.js library. You can see https://plot.ly/javascript/ if you want more details.  
-
 > When you check a box in one of the two sections ("Attributes" or "Agents"), you automatically uncheck the boxes in the other.
+
+Click on an element of the legend to deactivate its corresponding trace, or double-click to isolate it.    
+You can hold the left mouse button while moving it to zoom on a specific place of the chart.   
+The charts are built with the plotly.js library. You can see https://plot.ly/javascript/ if you want more details.   
 
 ## Built with
 * Vis.js 4.21.0
@@ -163,7 +165,7 @@ If you encounter a difficulty with Kajika, feel free to open an issue on this re
 You can also send me an email on lhdj.ines@gmail.com  
 
 ## Contributing
-If you want to contribute to the growth of Kajika, feel free to send a pull request and ideally an email specifying what you want to add to the app.
+If you want to contribute to the growth of Kajika, feel free to send a pull request and ideally an email specifying what you want to add to the app.  
 See [CONTRIBUTION.md](https://github.com/Azouu/Kajika/blob/master/CONTRIBUTION.md) to get more information on the structure of the app.  
 ## Authors
 The app was made during the internship of Inès Louahadj under the supervision of Tanguy Esteoule and Carole Bernon, team members of SMAC (IRIT), between April and July 2019. 
