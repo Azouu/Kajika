@@ -293,7 +293,8 @@ Here is a table with all the operators, their corresponding sign and the type of
 
 #### The options object 
 The options object are dependent on the vis.js library. You will find many more options if you see https://visjs.org/docs/network/nodes.html and https://visjs.org/docs/network/edges.html .
-It is easy to use. In these links you have 
+The **Name** column in the table references one of the many keys you can have in an options object. You can sometimes find nested objects (When the **Name** has a dropdown arrow).  
+If you want to have concrete examples on how to use these options, see the **full options** section of the vis.js nodes and edges documentation (links above).
 
 #### Customizing many experiments separately
 In the `kajika` folder, open `config.js`.  
