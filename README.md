@@ -17,15 +17,15 @@ It is used to visualize Multi-Agents Systems using networks.
 3. [Another paragraph](#paragraph2)
 
 
-## Getting started
-  ### Prerequisites
+# Getting started
+  ## Prerequisites
 Kajika has the following dependencies :
 * MongoDB 4.0 (NoSQL Database)
 * XAMPP 7.3.6 (Compatibility with Windows, Linux and Mac OS) or any Web Environment with a PHP interpreter.
 
- ### Installation 
+ ## Installation 
  
- #### 1. Install MongoDB 4.0 and MongoDB Compass
+ ### 1. Install MongoDB 4.0 and MongoDB Compass
  Go to https://www.mongodb.com/download-center/community .  
  Choose the 4.0 version and the MSI package, along with the OS that you use.
  Download the file and execute it. Select the checkbox "Install MongoDB Compass" when you are asked to.  
@@ -49,28 +49,28 @@ Kajika has the following dependencies :
  
 For more information on how to install MongoDB, go to https://docs.mongodb.com/v3.2/administration/install-community/ .
  
- #### 2. Install XAMPP 7.3.6
+ ### 2. Install XAMPP 7.3.6
  Go to https://www.apachefriends.org/download.html and get the installer for **PHP 7.3.6**.  
 Launch the installer and execute the instructions. If you get a warning message at the start of the installation about the User Account Control (UAC), just skip it. 
  
- #### 3. Get the MongoDB driver for XAMPP 
+ ### 3. Get the MongoDB driver for XAMPP 
  When you are done with the XAMPP installation, go to https://pecl.php.net/package/mongodb/1.5.5/windows and download the PHP 7.3 Thread Safe package.  
 Go to the xampp installation folder. Unzip the driver and put the ``` php_mongodb.dll ``` file in the `` xampp/php/ext `` folder.  
 Then, go to ``` xampp/php/ ``` and open ```php.ini ``` (it is a configuration file). Add the following line : ``` extension=php_mongodb.dll ```   
 Restart Apache on Xampp if it was already started.  
 For complementary information on how to install MongoDB on PHP for Xampp, see https://learnedia.com/install-mongodb-configure-php-xampp-windows/ .
 
- #### 4. Setup Kajika within the XAMPP environment
+ ### 4. Setup Kajika within the XAMPP environment
  Download the repository and unzip it in  ``` xampp/htdocs ``` or simply clone the git repository. Rename the folder ``` kajika ```.  
  Ensure that Apache is started on Xampp.  
  Open your browser, type in ``` http://localhost/kajika ```.  
  
-#### 5. Import your Adaptative Multi-Agent System (AMAS) on the MongoDB database
+### 5. Import your Adaptative Multi-Agent System (AMAS) on the MongoDB database
 If you use Java or Python for your AMAS, download one of the following drivers and follow the instructions.
 * **Java driver** :  https://github.com/FlorentMouysset/Links2-javadriver .
 * **Python driver** : https://github.com/tanguyesteoule/links_pydriver .   
 
-#### 6. Configure the connexion with the database 
+### 6. Configure the connexion with the database 
 Within the `` kajika `` folder, open `lib.php` with a text editor.  
 Change the line  7 `$database = $client->DBName;` by replacing *DBName* with the name of your defined MongoDB database.
 If you have not enabled authentication on MongoDB, leave the array on line 5 empty.
@@ -90,7 +90,7 @@ If it is done, change `lib.php` and replace the fields with the appropriate stri
 	$database = $client->DBName; 
  ```
  
-#### 7. Start using Kajika !
+### 7. Start using Kajika !
 First, ensure that Apache on Xampp is running then start the MongoDB service on the command prompt.  
 **Reminder** default on Windows is :
   ```
@@ -99,28 +99,28 @@ First, ensure that Apache on Xampp is running then start the MongoDB service on 
  Finally, open the browser and type in ``` http://localhost/kajika ```. You can now use the app !
 
 
- ## How to use Kajika ?
- ### 1. Experiment selection
+ # Guide ?
+ ## 1. Experiment selection
  Select "Experiments" on the left sidebar. 
  > We suggest that you give each experiment a different name when you fill the MongoDB DB with the driver. That way, you won't have two items with the same name on the experiment list.
  
- ### 2. Network visualization 
+ ## 2. Network visualization 
  **IMPORTANT : if your network doesn't show or there is an error, refresh the page with** <kbd>CTRL</kbd> + <kbd>F5</kbd>
-##### Information display 
+#### Information display 
 Kajika is designed to focus on the visualization of the network. You can hide/show information boxes about various elements as it suits you best.  
 * **Experiment information** : Click on the title of the experiment to show a modal with the related information.  
 * **Entity information** :  Click on a node. On the left bottom side of the page, a modal with the related information will pop.  
 * **Relation information** :  Click on an edge. On the right bottom side of the page, a modal with the related information will pop.   
 * **Multi-selection information display** : You can display many entity/relation information at the same time. To do that, click on an entity while holding <kbd>CTRL</kbd>.  
 
- #### Network visual customization
+ ### Network visual customization
 
 See [CUSTOMIZATION.md](https://github.com/Azouu/Kajika/blob/master/CUSTOMIZATION.md) for more details.
 
 
- #### Options panel
+ ### Options panel
  Click on the "Options" button on the top right corner of the page to toggle the options panel.  
- ##### **Network** 
+ #### **Network** 
 * **Physics**   
 When you move a node on the network, it will pull all the other connected nodes thanks to gravity models (physics).
 Physics are activated by default, but you can deactivate them. It can be useful to do this if you have too many entities and your network moves too much and doesn't get stabilized.
@@ -128,11 +128,11 @@ Physics are activated by default, but you can deactivate them. It can be useful 
 * **Selection**
 When toggling the "selection" button, you will only show the selected entities and their neighbors. You can select an entity or many by holding <kbd>CTRL</kbd> while clicking.
 
- ##### Player
+ #### Player
 * **FPS (Frame Per Second)**  
 Change the speed of the player. Default is 1 FPS.
 
- ##### Entity filter  
+ #### Entity filter  
 You can filter the network to display only the entities that interest you. 
 **IMPORTANT** concerning the "By attribute" filter.
 **The expression must be in the form** <attribute name> <operator> <value>. 
@@ -157,7 +157,7 @@ Example 3 :
 I want to show all the agents except the one that has the `name`attribute equaling `Agent 1`.
 In this case the expression would be : `name neq Agent_1`.
 
-### 3. Charts
+## 3. Charts
 Here you can see the evolution of numeric attributes.  
 When you check an attribute, you display its evolution for each agent that has it.  
 When you check an agent, you display the evolution of all its numeric attributes.  
