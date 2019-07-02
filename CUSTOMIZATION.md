@@ -2,8 +2,6 @@ This section will explain how to customize the visual appearance of a network.
  
 # Table of contents
 1. [Do I have to know web programming to customize my networks ?](#do-i-have-to-know-web-programming-to-customize-my-networks-)
-	1. [Example 1 : simple object](#example-1--simple-object)
-	2. [Example 2 : nested object](#example-2--nested-object)
 2. [The customization configuration file](#the-customization-configuration-file)
  	1. [Customization by entityID or relationID](#customization-by-entityid-or-relationid)
 	2. [Customization by type](#customization-by-type)
