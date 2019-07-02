@@ -90,6 +90,7 @@ First, ensure that Apache on Xampp is running then start the MongoDB service on 
  > We suggest that you give each experiment a different name when you fill the MongoDB DB with the driver. That way, you won't have two items with the same name on the experiment list.
  
  #### 2. Network visualization 
+ **IMPORTANT : if your network doesn't show or there is an error, refresh the page with** <kbd>CTRL<kbd> + <kbd>F5<kbd>**
 ##### Information display 
 Kajika is designed to focus on the visualization of the network. You can
 **Experiment information** : Click on the title of the experiment to show a modal with the related information.
