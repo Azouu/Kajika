@@ -1,33 +1,38 @@
 This section will explain how to customize the visual appearance of a network. 
 
-* Do I have to know web programming to customize my networks ?
+### Do I have to know web programming to customize my networks ?
 You don't have to know how to code in Javascript customize your network. You simply have to understand the concept of Javascript objects. The options are based on the nodes and edges options of the vis.js library we use to create the network. 
-"An object is a collection of names or keys and values, represented in name:value pairs". It is basically like a HashMap in Java, but you can have any type of value. You can also have nested objects. 
-Example : simple objet
+_"An object is a collection of names or keys and values, represented in name:value pairs"_. It is basically like a **HashMap** in Java, but you can put any type of value. You can also have nested objects. 
+##### Example 1 : simple object
 ```javascript 
     var house = {
     adress: "nowhere",
     storeys: 5,
 };
 ```
-Example 2 : nested object
+##### Example 2 : nested object
 ```javascript 
     var house = {
     adress: "nowhere",
     storeys: 5,
-    // nested object
+    // nested objects
     garden : {
-      
+      plants : {
+   	trees : ['apple', 'cherry'],
+	flowers : ['hibiscus', 'rosebush']
+	}
+      hut : true,
+      surface : 43
     }
 };
 ```
 For more details about Javascript objects, see https://www.digitalocean.com/community/tutorials/understanding-objects-in-javascript .
 
 
-* The `customizationVariables.js` configuration file 
+### The customization configuration file 
 
-Go to the `kajika` folder. Open `customizationVariables.js` with a text editor. 
-You will already find the variable `defaultOptions` .
+Go to the `kajika` folder. Open `customizationVariables.js` with a text editor.  
+You will already find the variable `defaultOptions`.  
 
 **Warning : You should always have `defaultOptions` in `customizationVariables.js` with this overall structure. Do not change the order of all the keys below.** 
 ```javascript 
@@ -44,14 +49,13 @@ var defaultOptions = {
 	}
 }; 
 ```
-You have a "nodes" and a "relations" key. You can customize each type of network component in its corresponding object.
+You have a **"nodes"** and a **"relations"** key. You can customize each type of network component in its corresponding value object. Here, you will find many nested objects. We will reference each nested object by its key and the type of its value.  
 
-* Customization by entityID or relationID
- If you want to change the style of a specific agent or relation, go in the corresponding object.
- In this object, you will have nested objects. 
- Key : ID  
- Value : An object with the options 
- Example : the entity with ID `agent1` is entirely green.
+#### Customization by entityID or relationID
+ If you want to change the style of a specific agent or relation, go in **nodes -> entityID** or **relations -> relationID**.  
+* **Key** : entityID or relationID.  
+* **Value** : an object with the options.  
+##### Example 3: the entity with ID `agent1` is entirely green.
  ```javascript 
 var defaultOptions = {
 	nodes  : { 	
@@ -70,11 +74,11 @@ var defaultOptions = {
 	}
 }; 
 ```
-* Customization by type 
-If you want to change the style of all the entities that have a certain type, the method is the same as it is for the ID.
-Key : Type name
-Value : An Object with the options 
-Example : the relations with type `type1` are dashes.
+#### Customization by type 
+If you want to change the style of all the entities that have a specific type, the method is the same as the ID. Go in **nodes -> type** or **relations -> type** .
+* **Key** : type name.  
+* **Value** : an object with the options.  
+##### Example : the relations of type `type1` are dashes.
  ```javascript 
 var defaultOptions = {
 	nodes  : { 	
@@ -94,11 +98,10 @@ var defaultOptions = {
 }; 
 ```
 
-* Customization by attribute 
-
-If you want to change the style of all the entities that verify a certain expression dependi, the structure of the nested objects are different.
-Key : Attribute name
-Value : An Object with the following structure  
+#### Customization by attribute 
+If you want to change the style of all the entities/relations that verify a certain expression depending on a specific attribute, the structure of the nested objects will be different. Go to**nodes -> attributeMap** or **relations -> attributeMap**
+* **Key** : attribute name.
+* **Value** : an object with the following structure :
  ```javascript
  <attributeName> : {
 	<operator1> : {
@@ -122,9 +125,9 @@ When you want to apply the options only if specific elements verify the experien
 	}
 }
 ```
-Warning : if you specify an empty id array, the option will never be applied. 
+_**Warning : if you specify an empty array of IDs, the options will never be applied.**_
 
-Example 1 : the entities with a `criticality >= 80 ` are squared-shaped.
+##### Example 1 : the entities with an attribute `criticality >= 80 ` are squared-shaped.
 
  ```javascript 
 var defaultOptions = {
@@ -150,8 +153,7 @@ var defaultOptions = {
 }; 
 ```
 
-Example 2 : If the entities with the ID `agent1`or `agent2` verify the expression `criticality == 0 `, then their size will be 50.
-
+##### Example 2 : If the entities with the ID `agent1`or `agent2` verify the expression `criticality == 0 `, then their size will be 50.
  ```javascript 
 var defaultOptions = {
 	nodes  : { 	
@@ -177,7 +179,7 @@ var defaultOptions = {
 }; 
 ```
 
-Example 3 : 
+##### Example 3 : Combination of all the examples
 You can combine all the examples we have shown above. We add that all the agents with the attribute `error < 0.5` have a red border.
  ```javascript 
 var defaultOptions = {
@@ -222,16 +224,16 @@ var defaultOptions = {
 	}
 }; 
 ```
-* What happens when many options overlap ?
-There will be many cases when an element will verify many criteria. The options can overlap if you put the same keys in the options object. In this case, the **LAST** that have been added to the object will be applied.
+### What happens when many options overlap ?
+There will be many cases when an element will verify many criteria. The options can overlap if you have similar keys in the options object.  
 
-
-Priority orders : 
+##### Priority orders 
 In a "nodes" or "relations" value object, you can customize by ID (entityID or relationID), attribute value (attributeMap), or type.
-If you specify the same keys in the options object, the priority order for applying the options is :
-ID > attributeMap > type. If 2 or more criteria are verified in the attributeMap sub-object, the last that is specified is proritary.
+If you specify similar keys in the options object, the priority order for applying the options is :
+**ID > attributeMap > type**.  
+However, if 2 or more criteria are verified in the attributeMap sub-object, the **last** is proritary.
 
-Example 4:
+###### Example 4: Priority orders for applying the `color` option
  ```javascript 
 var defaultOptions = {
 	nodes  : { 	
@@ -241,6 +243,7 @@ var defaultOptions = {
 			 }
 		},
 		attributeMap : {
+			// the error criteria has the priority over criticality here
 			criticality : {
 				get : {
 					map : [
@@ -269,14 +272,14 @@ var defaultOptions = {
 	}
 }; 
 ```
-In the example 4, we will use the `color` key in the options objects. 
-If agent1 verify all the criteria, it will be green because ID > attributeMap.
-However, for the other agents, if they validate either of the criteria related to the attributeMap, they will have a red border because the error is the last specified within the attributeMap object.
-Finally if an agent verify neither of the criteria except the one related to the type, it will be yellow.
+In the example 4, for all the criteria that are verified we apply a `color`option.  
+If `agent1` verify all the criteria, it will be **green** because **ID > attributeMap.**  
+However, for the other agents, if they validate either of the criteria related to the attributeMap, they will have a **red border** because the error is the last specified within the attributeMap object.
+Finally if an agent verify neither of the criteria except the one related to the type, it will be **yellow**.
 
-* What are the operators and the values we must supply for them ? 
-
-Here is a table with all the operators, their corresponding sign and the type of value you must supply.  
+##### Operators to write expressions
+In the "Customization by attribute" section, we have seen that we need operators to write expressions. We need them as **keys** in **nodes -> attributeMap -> "attributeName"** or **relations -> attributeMap -> "attributeName"**
+Here is a table with all the operators, their corresponding sign and the type of value you must supply in **nodes -> attributeMap -> "attributeName" -> "operator" -> map[i][0]** .  
 
 | Operator | Corresponding sign  | Value type |
 | :---------------: |:---------------:|:---------------:| 
@@ -288,15 +291,14 @@ Here is a table with all the operators, their corresponding sign and the type of
 | neq | != |  numeric value |
 | between | ∈ |  array of 2 numeric values |
 
-* What about the options objects ? 
+#### The options object 
 The options object are dependent on the vis.js library. You will find many more options if you see https://visjs.org/docs/network/nodes.html and https://visjs.org/docs/network/edges.html .
+It is easy to use. In these links you have 
 
-* Customizing many experiments 
-In the `kajika` folder, open `config.js`.
-In this file, you will find the `customizationOptionsMap` object.
-Each key is the name of the experiment. The corresponding value is the customization variable specified in `customizationVariables.js`.
-
-Example : 
+#### Customizing many experiments separately
+In the `kajika` folder, open `config.js`.  
+In this file, you will find the `customizationOptionsMap` object.  
+Each key is the name of the experiment. The corresponding value is the customization variable specified in `customizationVariables.js` before.
 ```javascript 
 var customizationOptionsMap = {
 	"ExperimentName1" : experimentOptions,
@@ -304,5 +306,5 @@ var customizationOptionsMap = {
 ```
 `experimentOptions` references the variable experimentOptions in `customizationVariables.js`.
 Default customization variable is `defaultOptions`. If you supply a wrong variable in the map or if you don't specify any variable for that experiment name, `defaultOptions` will be applied.
-You mustn't remove the defaultOptions variable of `customizationVariables.js`.
+> You mustn't remove the defaultOptions variable of `customizationVariables.js`.
 
