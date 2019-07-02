@@ -1,3 +1,4 @@
+// you MUST leave the defaultOptions var
 var defaultOptions = {
 	nodes  : { 	
 		entityID : {},
@@ -7,7 +8,9 @@ var defaultOptions = {
 
 	relations :	{ 
 		relationID : {}, 
+		attributeMap : {},
 		type : {}, 
-		attributeMap : {}
 	}
 };
+
+// add customization variables here
