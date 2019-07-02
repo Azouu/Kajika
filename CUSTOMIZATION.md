@@ -1,16 +1,29 @@
 This section will explain how to customize the visual appearance of a network. 
+ 
+# Table of contents
+1. [Do I have to know web programming to customize my networks ?](#do-i-have-to-know-web-programming-to-customize-my-networks-)
+	1. [Example 1 : simple object](#example-1--simple-object)
+	2. [Example 2 : nested object](#example-2--nested-object)
+2. [The customization configuration file](#the-customization-configuration-file)
+ 	1. [Customization by entityID or relationID](#customization-by-entityid-or-relationid)
+	2. [Customization by type](#customization-by-type)
+	3. [Customization by attribute](#customization-by-attribute)
+	4. [Operators to write expressions](#operators-to-write-expressions)
+	5. [The options object](#the-options-object)
+	6. [What happens when many options overlap ?](#what-happens-when-many-options-overlap-)
+	7. [Customizing many experiments separately](#customizing-many-experiments-separately)
 
-### Do I have to know web programming to customize my networks ?
+## Do I have to know web programming to customize my networks ?
 You don't have to know how to code in Javascript customize your network. You simply have to understand the concept of Javascript objects. The options are based on the nodes and edges options of the vis.js library we use to create the network. 
 _"An object is a collection of names or keys and values, represented in name:value pairs"_. It is basically like a **HashMap** in Java, but you can put any type of value. You can also have nested objects. 
-##### Example 1 : simple object
+### Example 1 : simple object
 ```javascript 
     var house = {
     adress: "nowhere",
     storeys: 5,
 };
 ```
-##### Example 2 : nested object
+### Example 2 : nested object
 ```javascript 
     var house = {
     adress: "nowhere",
@@ -29,7 +42,7 @@ _"An object is a collection of names or keys and values, represented in name:val
 For more details about Javascript objects, see https://www.digitalocean.com/community/tutorials/understanding-objects-in-javascript .
 
 
-### The customization configuration file 
+## The customization configuration file 
 
 Go to the `kajika` folder. Open `customizationVariables.js` with a text editor.  
 You will already find the variable `defaultOptions`.  
@@ -51,11 +64,11 @@ var defaultOptions = {
 ```
 You have a **"nodes"** and a **"relations"** key. You can customize each type of network component in its corresponding value object. Here, you will find many nested objects. We will reference each nested object by its key and the type of its value.  
 
-#### Customization by entityID or relationID
+### Customization by entityID or relationID
  If you want to change the style of a specific agent or relation, go in **nodes -> entityID** or **relations -> relationID**.  
 * **Key** : entityID or relationID.  
 * **Value** : an object with the options.  
-##### Example 3: the entity with ID `agent1` is entirely green.
+#### Example 3: the entity with ID `agent1` is entirely green.
  ```javascript 
 var defaultOptions = {
 	nodes  : { 	
@@ -74,11 +87,11 @@ var defaultOptions = {
 	}
 }; 
 ```
-#### Customization by type 
+### Customization by type 
 If you want to change the style of all the entities that have a specific type, the method is the same as the ID. Go in **nodes -> type** or **relations -> type** .
 * **Key** : type name.  
 * **Value** : an object with the options.  
-##### Example 4: the relations of type `type1` are dashes.
+#### Example 4: the relations of type `type1` are dashes.
  ```javascript 
 var defaultOptions = {
 	nodes  : { 	
@@ -98,7 +111,7 @@ var defaultOptions = {
 }; 
 ```
 
-#### Customization by attribute 
+### Customization by attribute 
 If you want to change the style of all the entities/relations that verify a certain expression depending on a specific attribute, the structure of the nested objects will be different. Go to**nodes -> attributeMap** or **relations -> attributeMap**
 * **Key** : attribute name.
 * **Value** : an object with the following structure :
@@ -130,7 +143,7 @@ When you want to apply the options only if specific elements verify the experien
 ```
 _**Warning : if you specify an empty array of IDs, the options will never be applied.**_
 
-##### Operators to write expressions
+### Operators to write expressions
 In the "Customization by attribute" section, we have seen that we need operators to write expressions. We need them as **keys** in **nodes -> attributeMap -> "attributeName"** or **relations -> attributeMap -> "attributeName"**
 Here is a table with all the operators, their corresponding sign and the type of value you must supply in **nodes -> attributeMap -> "attributeName" -> "operator" -> map[i][0]** .  
 
@@ -144,12 +157,12 @@ Here is a table with all the operators, their corresponding sign and the type of
 | neq | != |  numeric value |
 | between | ∈ |  array of 2 numeric values |
 
-#### The options object 
+### The options object 
 The options object are dependent on the vis.js library. You will find many more options if you see https://visjs.org/docs/network/nodes.html and https://visjs.org/docs/network/edges.html .
 The **Name** column in the table references one of the many keys you can have in an options object. You can sometimes find nested objects (When the **Name** has a dropdown arrow).  
 If you want to have concrete examples on how to use these options, see the **full options** section of the vis.js nodes and edges documentation (links above).
 
-##### Example 5: the entities with an attribute `criticality >= 80 ` are squared-shaped.
+#### Example 5: the entities with an attribute `criticality >= 80 ` are squared-shaped.
 
  ```javascript 
 var defaultOptions = {
@@ -176,7 +189,7 @@ var defaultOptions = {
 }; 
 ```
 
-##### Example 6: If the entities with the ID `agent1`or `agent2` verify the expression `criticality == 0 `, then their size will be 50.
+#### Example 6: If the entities with the ID `agent1`or `agent2` verify the expression `criticality == 0 `, then their size will be 50.
  ```javascript 
 var defaultOptions = {
 	nodes  : { 	
@@ -202,7 +215,7 @@ var defaultOptions = {
 }; 
 ```
 
-##### Example 7: Combination of all the examples
+#### Example 7: Combination of all the examples
 You can combine all the examples we have shown above. We add that all the agents with the attribute `error < 0.5` have a red border.
  ```javascript 
 var defaultOptions = {
@@ -247,16 +260,16 @@ var defaultOptions = {
 	}
 }; 
 ```
-### What happens when many options overlap ?
+## What happens when many options overlap ?
 There will be many cases when an element will verify many criteria. The options can overlap if you have similar keys in the options object.  
 
-##### Priority orders 
+### Priority orders 
 In a "nodes" or "relations" value object, you can customize by ID (entityID or relationID), attribute value (attributeMap), or type.
 If you specify similar keys in the options object, the priority order for applying the options is :
 **ID > attributeMap > type**.  
 However, if 2 or more criteria are verified in the attributeMap sub-object, the **last** is proritary.
 
-###### Example 8: Priority orders for applying the `color` option
+#### Example 8: Priority orders for applying the `color` option
  ```javascript 
 var defaultOptions = {
 	nodes  : { 	
@@ -300,7 +313,7 @@ If `agent1` verify all the criteria, it will be **green** because **ID > attribu
 However, for the other agents, if they validate either of the criteria related to the attributeMap, they will have a **red border** because the error is the last specified within the attributeMap object.
 Finally if an agent verify neither of the criteria except the one related to the type, it will be **yellow**.
 
-#### Customizing many experiments separately
+## Customizing many experiments separately
 In the `kajika` folder, open `config.js`.  
 In this file, you will find the `customizationOptionsMap` object.  
 Each key is the name of the experiment. The corresponding value is the customization variable specified in `customizationVariables.js` before.
