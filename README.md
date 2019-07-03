@@ -133,7 +133,10 @@ When you move a node on the network, it will pull all the other connected nodes 
 Physics are activated by default, but you can deactivate them. It can be useful to do this if you have too many entities and your network moves too much and doesn't get stabilized.
 
 * **Selection**  
-When toggling the "selection" button, you will only show the selected entities and their neighbors. You can select an entity or many by holding <kbd>CTRL</kbd> while clicking.
+When toggling the "selection" button, you will only show the selected entities and their neighbors. You can select an entity or many by holding <kbd>CTRL</kbd> while clicking.  
+
+* **Clear selection**  
+Unselects all selected entities and edges, and closes the opened modals.
 
  #### Player
 * **FPS (Frame Per Second)**  
