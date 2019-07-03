@@ -55,33 +55,37 @@
 				<div id="graph-container" class="col-9"></div>
 
 				<div class="col pl-3">
-					<div class="checkbox-container border m-2 p-3">
+					<div class="checkbox-container border p-3" id="attributes-container">
 						<h5> Attributes </h5>
 						<input type="text" id="searchAttribute"  class="d-inline-block form-control w-75" onkeyup="filterCheckboxes(this.id,'a-g-checkboxes', 'attribute')" placeholder="Attribute name research">
 						<button type="button" class="d-inline-block btn btn-light" onclick="resetInput('searchAttribute')">
 				    		<i class="fas fa-sync"></i> 
 				    	</button>
-						<div id="a-g-checkboxes">
+						<div id="a-g-checkboxes" class="h-50 overflow-auto">
 							<?php
 								foreach($arr as $item) {
 									echo "<div class='attribute'>";
-										echo "<input type='checkbox' value='$item' onchange='handleChange(this,map,length)'  class='attributeCheckbox'>";
+										echo "<input type='checkbox' value='$item' onclick='handleChange(this,map,length)'  class='attributeCheckbox'>";
 										echo "<label for='$item'> $item </label> <br>" ;
 									echo "</div>";
 								}
 							?>
 						</div>
+						<button class="d-inline btn btn-success m-1 btn-add checkall-btn" onclick="checkAll(this)"> <i class="fas fa-check"></i> Check all </button> 
+						<button class="d-inline btn btn-outline-success m-1  uncheckall-btn" onclick="unCheckAll(this)"> Uncheck all </button> 
 					</div>
 
-					<div class="checkbox-container border m-2 p-3">
+					<div class="checkbox-container overflow-auto border m-2 p-3" id="agents-container">
 						<h5> Agents </h5>
 						<input type="text" id="searchEntity" class="d-inline-block form-control w-75" onkeyup="filterCheckboxes(this.id,'e-g-checkboxes', 'entity')" placeholder="Entity ID research">
 						<button type="button" class="d-inline-block btn btn-light" onclick="resetInput('searchEntity')">
 				    		<i class="fas fa-sync"></i> 
 				    	</button>
-						<div id="e-g-checkboxes">
+						<div id="e-g-checkboxes" class="h-50 overflow-auto">
 
 						</div>
+						<button class="d-inline btn btn-success m-1 btn-add checkall-btn"  onclick="checkAll(this)"> <i class="fas fa-check"></i> Check all </button> 
+						<button class="d-inline btn btn-outline-success m-1  btn-add uncheckall-btn" onclick="unCheckAll(this)"> Uncheck all </button> 
 					</div>
 				</div>
 			</div>
@@ -240,6 +244,41 @@
 		for (entity of _.keys(map)) { 
 			document.getElementById("e-g-checkboxes").innerHTML += writeEntityCheckbox(entity);
 		}
+
+		function checkAll(button) {
+			var idParent = $(button).parents('.checkbox-container').attr('id');
+			var idCheckboxes = (idParent == 'attributes-container') ? 'a-g-checkboxes' : 'e-g-checkboxes';
+			var checkboxes = $('#' + idCheckboxes).find('input');
+			console.log(checkboxes);
+			for (checkbox of checkboxes) {
+				if (! $(checkbox).prop('checked')) {
+
+					$(checkbox).click().prop('checked', true);
+				}
+			}	
+		}
+
+		function unCheckAll(button) {
+			var idParent = $(button).parents('.checkbox-container').attr('id');
+			var idCheckboxes = (idParent == 'attributes-container') ? 'a-g-checkboxes' : 'e-g-checkboxes';
+			var checkboxes = $('#' + idCheckboxes).find('input');
+			console.log(checkboxes);
+			for (checkbox of checkboxes) {
+				if ($(checkbox).prop('checked')) {
+					$(checkbox).click().prop('checked', false);
+				}
+			}	
+		}
+
+
+
+
+
+		// if there is nothing to select, deactivate button select all and unselect all
+	//	if ()
+		// if nothing is selected, deactivate button "unselect all"
+
+
 	</script>
 
 </body>
