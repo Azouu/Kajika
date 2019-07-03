@@ -322,6 +322,11 @@ class NetworkManager {
 		});
 	}
 
+	clearSelection() {
+		this.network.unselectAll();
+		DataWriter.updateModals(this);
+	}
+
 }
 
 

@@ -73,6 +73,11 @@
 					   	data-content="Select one or many entities holding CTRL while clicking, then toggle this button to show only the <b>selected entities and their neighbors</b>" > 
 					    	 	<i class="fas fa-question-circle"></i> 
 					    </button>	
+					    <!-- Button to unselect and close modals automatically -->
+					    <button type="button" class="btn btn-primary mt-2 " onclick="networkManager.clearSelection()">
+				    		 Clear selection
+				    	</button>
+
 				    	<h6 class="mt-4"> Player </h6> 
 				    	<!-- resets fps and restarts the player with new fps if the player is not paused -->	
 				    	<p class="d-inline"> FPS </p> 
@@ -80,7 +85,8 @@
 				    	<button class="d-inline-block btn btn-light mb-2" data-toggle="popover" data-trigger="hover" data-html="true" data-placement="top" 
 					   	data-content="<b> Frame Per Second </b> : set the speed of the network player" > 
 					    	 	<i class="fas fa-question-circle"></i> 
-					    </button>
+					    </button>	
+
 				    	<!--Tout ce qui concerne les input dynamiques avec les critères pour les entités à afficher sur le graphe -->
 				    	<div>
 				    		<h6 class="d-inline-block mt-4"> Entity filter </h6> 
