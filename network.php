@@ -67,20 +67,20 @@
 				    	<h6> Network </h6> 
 				    	<p> Physics <input id="toggle-one" checked type="checkbox" data-onstyle="success" data-offstyle="danger" onchange="networkManager.togglePhysics()"> </p>
 
+				    	
+				    	<p class="d-inline"> Selection <input id="toggle-two" type="checkbox" data-onstyle="success" data-offstyle="danger" class="d-inline" onchange="networkManager.toggleSelection()"> </p>
 				    	<button class="d-inline-block btn btn-light mb-2" data-toggle="popover" data-trigger="hover" data-html="true" data-placement="top" 
 					   	data-content="Select one or many entities holding CTRL while clicking, then toggle this button to show only the <b>selected entities and their neighbors</b>" > 
 					    	 	<i class="fas fa-question-circle"></i> 
 					    </button>	
-				    	<p class="d-inline"> Selection <input id="toggle-two" type="checkbox" data-onstyle="success" data-offstyle="danger" class="d-inline" onchange="networkManager.toggleSelection()"> </p>
 				    	<h6 class="mt-4"> Player </h6> 
-				    	<!-- resets fps and restarts the player with new fps if the player is not paused -->
+				    	<!-- resets fps and restarts the player with new fps if the player is not paused -->	
+				    	<p class="d-inline"> FPS </p> 
+				    	<input id="fps" class='form-control d-inline w-25 ml-1' type="number" value="1" min="0" onchange="player.setFPS(this.value); player.toggle(); player.toggle();">  
 				    	<button class="d-inline-block btn btn-light mb-2" data-toggle="popover" data-trigger="hover" data-html="true" data-placement="top" 
 					   	data-content="<b> Frame Per Second </b> : set the speed of the network player" > 
 					    	 	<i class="fas fa-question-circle"></i> 
-					    </button>	
-				    	<p class="d-inline"> FPS </p> 
-				    	<input id="fps" class='form-control d-inline w-25 ml-1' type="number" value="1" min="0" onchange="player.setFPS(this.value); player.toggle(); player.toggle();">  
-
+					    </button>
 				    	<!--Tout ce qui concerne les input dynamiques avec les critères pour les entités à afficher sur le graphe -->
 				    	<div>
 				    		<h6 class="d-inline-block mt-4"> Entity filter </h6> 
