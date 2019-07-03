@@ -100,7 +100,7 @@ class NetworkManager {
 	}
 
 	getNoPhysicsOptions() {
-		return { physics : false, multiselect : true, selectConnectedEdges : false};
+		return { physics : false, interaction : {multiselect : true, selectConnectedEdges : false} };
 	}
 
 
@@ -150,20 +150,24 @@ class NetworkManager {
 	//show only the selected nodes with CTRL+click and their neighbors in the current snapshot
 	toggleSelection() {
 		//toggle 'selectionActivated' boolean
-		this.selectionActivated = ! this.selectionActivated;
-
-		if (this.selectionActivated) {
-			//get the nodes to keep according to what is selected
-			this.selectedNodes = this.network.getSelectedNodes();
-			this.selectedNodesNeighbors = this.getAllNeighborsNodes(this.selectedNodes);
-			var elementsToKeepArray = _.concat(this.selectedNodes, this.selectedNodesNeighbors);
-			//removes the nodes that aren't selected or aren't connected to them
-			this.nodes.remove(_.difference(this.nodes.getIds(), elementsToKeepArray));
+		if (this.network.getSelectedNodes().length == 0) {
+			$('#toggle-two').bootstrapToggle('off');
 		} else {
-			//reloads everything
-			this.loadSnapshot(this.currentIndex);
-			this.network.selectNodes(this.selectedNodes, true);
-		}
+			this.selectionActivated = ! this.selectionActivated;
+			if (this.selectionActivated) {
+				//get the nodes to keep according to what is selected
+				this.selectedNodes = this.network.getSelectedNodes();
+				this.selectedNodesNeighbors = this.getAllNeighborsNodes(this.selectedNodes);
+				var elementsToKeepArray = _.concat(this.selectedNodes, this.selectedNodesNeighbors);
+				//removes the nodes that aren't selected or aren't connected to them
+				this.nodes.remove(_.difference(this.nodes.getIds(), elementsToKeepArray));
+			} else {
+				//reloads everything
+				this.loadSnapshot(this.currentIndex);
+				this.network.selectNodes(this.selectedNodes, true);
+			}
+		} 
+		
 	}
 
 	getSelectedNeighbors(snapshotNumber) {

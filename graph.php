@@ -271,14 +271,6 @@
 		}
 
 
-
-
-
-		// if there is nothing to select, deactivate button select all and unselect all
-	//	if ()
-		// if nothing is selected, deactivate button "unselect all"
-
-
 	</script>
 
 </body>

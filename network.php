@@ -81,7 +81,7 @@
 				    	<h6 class="mt-4"> Player </h6> 
 				    	<!-- resets fps and restarts the player with new fps if the player is not paused -->	
 				    	<p class="d-inline"> FPS </p> 
-				    	<input id="fps" class='form-control d-inline w-25 ml-1' type="number" value="1" min="0" onchange="player.setFPS(this.value); player.toggle(); player.toggle();">  
+				    	<input id="fps" class='form-control d-inline w-50 ml-1' type="number" value="1" min="0" onchange="player.setFPS(this.value); player.toggle(); player.toggle();">  
 				    	<button class="d-inline-block btn btn-light mb-2" data-toggle="popover" data-trigger="hover" data-html="true" data-placement="top" 
 					   	data-content="<b> Frame Per Second </b> : set the speed of the network player" > 
 					    	 	<i class="fas fa-question-circle"></i> 
@@ -354,6 +354,7 @@
 		}
 		reloadNetworkWithFilters(networkManager, experiment);
 	}
+
 
 </script>
 </body>
