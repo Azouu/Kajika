@@ -163,8 +163,10 @@ class NetworkManager {
 				this.nodes.remove(_.difference(this.nodes.getIds(), elementsToKeepArray));
 			} else {
 				//reloads everything
+				var selectedNodes = this.network.getSelectedNodes();
+				var selectedEdges = this.network.getSelectedEdges();
 				this.loadSnapshot(this.currentIndex);
-				this.network.selectNodes(this.selectedNodes, true);
+				this.network.setSelection({nodes : selectedNodes, edges : selectedEdges});
 			}
 		} 
 		
@@ -173,7 +175,7 @@ class NetworkManager {
 	getSelectedNeighbors(snapshotNumber) {
 		var array = [];
 		for (var id of this.selectedNodes) {
-			array = _.concat(array, this.experiment.getRelatedEntities(snapshotNumber, id));
+				array = _.concat(array, this.experiment.getRelatedEntities(snapshotNumber, id));
 		}
 		return array;
 	}
@@ -245,7 +247,7 @@ class NetworkManager {
 			var label = this.experiment.getName(ent);
 			var title = DataWriter.writeObjectHTML(ent);
 			var nodeOptions = Customizer.getVisualOptions(this, ent, 'nodes');
-			var nodeData = {id : ent.entityID, label : label, title : title};
+			var nodeData = {id : ent.entityID, label : label, title : title, color : { highlight : '#2472f0'}};
 			return _.merge(nodeData, nodeOptions);
 		}
 	}
