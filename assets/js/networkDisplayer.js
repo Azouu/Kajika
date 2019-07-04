@@ -264,7 +264,7 @@ class NetworkManager {
 		var rel = this.experiment.getRelation(snapshotNumber, id);
 		var title = DataWriter.writeObjectHTML(rel);
 		var edgeOptions = Customizer.getVisualOptions(this, rel, 'relations');
-		var edgeData = {id : rel.relationID, from : rel.nodeAid, to : rel.nodeBid, ...(rel.isOriented && {arrows : "to"}), color : {inherit : false}};
+		var edgeData = {id : rel.relationID, from : rel.nodeAid, to : rel.nodeBid, ...(rel.isOriented && {arrows : "to"}), color : {inherit : false}, color : { highlight : '#2472f0' }};
 		return _.merge(edgeData,edgeOptions);
 	}
 
