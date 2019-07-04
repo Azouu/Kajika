@@ -121,6 +121,11 @@
 		    } 
 		  }
 		}
+
+		function hasNumericAttribute(entity) {
+			return _.has(entity, 'attributeMap') && _.findKey(entity.attributeMap, _.isNumeric)	
+		}
+
 		// Returns an object : for each entityID, the attributes and their evolution if they are numeric 
 		function getMapEntities(snapshots) {
 			var map = {};
@@ -128,7 +133,8 @@
 				for(e in snapshots[s].entities) {
 					var entity = snapshots[s].entities[e];
 					// Adds the entity to the map if it doesn't exist yet
-					if (!map.hasOwnProperty(entity.entityID)) {
+
+					if (!map.hasOwnProperty(entity.entityID) && hasNumericAttribute(entity)) {
 						map[entity.entityID] = {};
 						map[entity.entityID].type = entity.type;
 					}
@@ -143,6 +149,7 @@
 						}
 				}
 			}
+			//remove empty elements
 			return map;
 		}
 
