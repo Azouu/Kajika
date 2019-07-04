@@ -16,12 +16,13 @@ It is used to visualize Multi-Agents Systems using networks.
 			2. [Player](#player)
 			3. [Entity filter](#entity-filter)
 	3. [Charts](#3-charts)
-3. [Built with](#built-with)
-4. [Support](#support)
-5. [Contributing](#contributing)
-6. [Authors](#authors)
-7. [License](#license)
-8. [Project status](#project-status)
+3. [Important notes about Kajika's performances](#important-notes-about-kajikas-performances)
+4. [Built with](#built-with)
+5. [Support](#support)
+6. [Contributing](#contributing)
+7. [Authors](#authors)
+8. [License](#license)
+9. [Project status](#project-status)
 
 
 # Getting started
@@ -176,6 +177,15 @@ When you check an agent, you display the evolution of all its numeric attributes
 Click on an element of the legend to deactivate its corresponding trace, or double-click to isolate it.    
 You can hold the left mouse button while moving it to zoom on a specific place of the chart.   
 The charts are built with the plotly.js library. You can see https://plot.ly/javascript/ if you want more details.   
+
+# Important notes about Kajika's performances
+Kajika is currently a little bit slow when it has to load a lot of data. 
+At the loading of an experiment or a charts page, many operations can be performed by the app. This will slow down the page display. if you use a laptop, make sure you put it on **optimal performance mode** when clicking on the **battery icon** of the task bar.   
+If a network has a lot of nodes and edges, the automatic simulation can also be slow. In this case, it's better **not to increase the number of FPS**, set to 1 by default.  
+For the network page, the entity filter and selection toggle can have a little bit of latency depending on the number of network elements and the total snapshots number. It is the same when it comes to the charts page, when you click on a checkbox.  
+
+You can have some issues with **memory exhaustion** . **In this case you can press <kbd>CTRL</kbd> + <kbd>F5</kbd>** in order to refresh the page and clear the cache. If it still doesn't work, please read the [Support](#support) section to report the issue.
+
 
 # Built with
 * Vis.js 4.21.0
