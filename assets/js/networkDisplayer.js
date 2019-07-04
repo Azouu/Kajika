@@ -150,7 +150,7 @@ class NetworkManager {
 	//show only the selected nodes with CTRL+click and their neighbors in the current snapshot
 	toggleSelection() {
 		//toggle 'selectionActivated' boolean
-		if (this.network.getSelectedNodes().length == 0) {
+		if (this.network.getSelectedNodes().length == 0 && ! this.selectionActivated) {
 			$('#toggle-two').bootstrapToggle('off');
 		} else {
 			this.selectionActivated = ! this.selectionActivated;

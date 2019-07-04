@@ -55,13 +55,13 @@
 				<div id="graph-container" class="col-9"></div>
 
 				<div class="col pl-3">
-					<div class="checkbox-container border p-3" id="attributes-container">
+					<div class="checkbox-container overflow-auto border m-2 p-3" id="attributes-container">
 						<h5> Attributes </h5>
 						<input type="text" id="searchAttribute"  class="d-inline-block form-control w-75" onkeyup="filterCheckboxes(this.id,'a-g-checkboxes', 'attribute')" placeholder="Attribute name research">
 						<button type="button" class="d-inline-block btn btn-light" onclick="resetInput('searchAttribute')">
 				    		<i class="fas fa-sync"></i> 
 				    	</button>
-						<div id="a-g-checkboxes" class="h-50 overflow-auto">
+						<div id="a-g-checkboxes" class="overflow-auto checkboxes">
 							<?php
 								foreach($arr as $item) {
 									echo "<div class='attribute'>";
@@ -72,7 +72,7 @@
 							?>
 						</div>
 						<button class="d-inline btn btn-success m-1 btn-add checkall-btn" onclick="checkAll(this)"> <i class="fas fa-check"></i> Check all </button> 
-						<button class="d-inline btn btn-outline-success m-1  uncheckall-btn" onclick="unCheckAll(this)"> Uncheck all </button> 
+						<button class="d-inline btn btn-outline-success m-1  btn-add uncheckall-btn" onclick="unCheckAll(this)"> Uncheck all </button> 
 					</div>
 
 					<div class="checkbox-container overflow-auto border m-2 p-3" id="agents-container">
@@ -81,7 +81,7 @@
 						<button type="button" class="d-inline-block btn btn-light" onclick="resetInput('searchEntity')">
 				    		<i class="fas fa-sync"></i> 
 				    	</button>
-						<div id="e-g-checkboxes" class="h-50 overflow-auto">
+						<div id="e-g-checkboxes" class="overflow-auto checkboxes">
 
 						</div>
 						<button class="d-inline btn btn-success m-1 btn-add checkall-btn"  onclick="checkAll(this)"> <i class="fas fa-check"></i> Check all </button> 

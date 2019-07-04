@@ -31,8 +31,8 @@
 						<p> <i class="fab fa-github"></i> </p>
 						<p class="lead"> With Kajika, display dynamic, automatically organised, customizable network views. </p>
 						<p class="lead"> Track the attributes of your entities.</p>
-						<a href="https://github.com/Azouu/Kajika/blob/master/README.md">
-							<button type="button" class="btn btn-dark" target="_blank">Guide</button>
+						<a href="https://github.com/Azouu/Kajika/blob/master/README.md" target="_blank">
+							<button type="button" class="btn btn-dark" >Guide</button>
 						</a>
 						<br>
 						<a href="https://github.com/Azouu/Kajika">

@@ -178,7 +178,9 @@
   height : 17em;
 }
 
-
+.checkboxes {
+  height : 7.5rem;
+}
 
 /**************************** GRAPH **********************/
 .inputError {
