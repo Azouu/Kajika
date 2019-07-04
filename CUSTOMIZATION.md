@@ -10,6 +10,7 @@ This section will explain how to customize the visual appearance of a network.
 	5. [The options object](#the-options-object)
 	6. [What happens when many options overlap ?](#what-happens-when-many-options-overlap-)
 	7. [Customizing many experiments separately](#customizing-many-experiments-separately)
+	8. [The "color" option]()
 
 ## Do I have to know web programming to customize my networks ?
 You don't have to know how to code in Javascript customize your network. You simply have to understand the concept of Javascript objects. The options are based on the nodes and edges options of the vis.js library we use to create the network. 
@@ -323,4 +324,42 @@ var customizationOptionsMap = {
 `experimentOptions` references the variable experimentOptions in `customizationVariables.js`.
 Default customization variable is `defaultOptions`. If you supply a wrong variable in the map or if you don't specify any variable for that experiment name, `defaultOptions` will be applied.
 > You mustn't remove the defaultOptions variable of `customizationVariables.js`.
+
+## The "color option
+* **Default colors** 
+Nodes : light blue (#D2E5FF)  
+Highlighted (selected) nodes : dark blue (#2472f0)  
+Edges : grey  
+Highlighted (selected) edges : dark blue (#2472f0)  
+
+* **Setting the color option 
+If you want to set a color for the nodes/edges, be careful.
+#### Example 9
+```javascript 
+	entityID : {
+			 agent1 : { 
+				 color : 'green'
+			 }
+		}
+```
+In the example 9, you overlap ALL color options. The node will be green even if it is highlighted. Instead you **should never set the color as a value of the color key, but rather supply an object**. If you want to change the color of the node/edge on highlight, see example 11.
+#### Example 10 : set the background color of the agent of ID 'agent1' to green
+```javascript 
+	entityID : {
+			 agent1 : { 
+				 color : {
+				 background : 'green'
+			 }
+		}
+```
+#### Example 11 : set the highlight color of the agent of ID 'agent1' to red
+```javascript 
+	entityID : {
+			 agent1 : { 
+				 color : {
+				 background : 'green',
+				 highlight : 'red'
+			 }
+		}
+```
 
