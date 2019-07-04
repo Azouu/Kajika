@@ -64,7 +64,7 @@
 						<div id="a-g-checkboxes" class="overflow-auto checkboxes">
 							<?php
 								foreach($arr as $item) {
-									echo "<div class='attribute'>";
+									echo "<div class='attribute line'>";
 										echo "<input type='checkbox' value='$item' onclick='handleChange(this,map,length)'  class='attributeCheckbox'>";
 										echo "<label for='$item'> $item </label> <br>" ;
 									echo "</div>";
@@ -155,7 +155,7 @@
 
 		
 		function writeEntityCheckbox(item) {
-			return "<div class='entity'> <input type='checkbox' class='entityCheckbox' onclick='handleChangeEntity(this, map, length)' value='"+ item + "' > <label for='" + item + "'>" + item + "</label> <br> </div>";
+			return "<div class='entity line'> <input type='checkbox' class='entityCheckbox' onclick='handleChangeEntity(this, map, length)' value='"+ item + "' > <label for='" + item + "'>" + item + "</label> <br> </div>";
 		}
 
 
@@ -256,10 +256,9 @@
 			var idParent = $(button).parents('.checkbox-container').attr('id');
 			var idCheckboxes = (idParent == 'attributes-container') ? 'a-g-checkboxes' : 'e-g-checkboxes';
 			var checkboxes = $('#' + idCheckboxes).find('input');
-			console.log(checkboxes);
 			for (checkbox of checkboxes) {
-				if (! $(checkbox).prop('checked')) {
-
+				var displayMode = ($($(checkbox).parents('.line')[0]).css('display'));
+				if (! $(checkbox).prop('checked') && displayMode != 'none') {
 					$(checkbox).click().prop('checked', true);
 				}
 			}	
@@ -268,10 +267,10 @@
 		function unCheckAll(button) {
 			var idParent = $(button).parents('.checkbox-container').attr('id');
 			var idCheckboxes = (idParent == 'attributes-container') ? 'a-g-checkboxes' : 'e-g-checkboxes';
-			var checkboxes = $('#' + idCheckboxes).find('input');
-			console.log(checkboxes);
+			var checkboxes = $('#' + idCheckboxes).find('input');	
 			for (checkbox of checkboxes) {
-				if ($(checkbox).prop('checked')) {
+				var displayMode = ($($(checkbox).parents('.line')[0]).css('display'));
+				if ($(checkbox).prop('checked') && displayMode != 'none') {
 					$(checkbox).click().prop('checked', false);
 				}
 			}	

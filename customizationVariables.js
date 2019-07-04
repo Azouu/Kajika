@@ -1,7 +1,9 @@
 // you MUST leave the defaultOptions var
 var defaultOptions = {
 	nodes  : { 	
-		entityID : {},
+		entityID : {
+			'VAC_E6' : { color : 'red'}
+		},
 		attributeMap : {},
 		type : {}
 	},
