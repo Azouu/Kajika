@@ -16,7 +16,7 @@ It is used to visualize Multi-Agents Systems using networks.
 			2. [Player](#player)
 			3. [Entity filter](#entity-filter)
 	3. [Charts](#3-charts)
-3. [Important notes about Kajika's performances](#)
+3. [Important notes about Kajika's performances](#important-notes-about-kajikas-performances)
 4. [Built with](#built-with)
 5. [Support](#support)
 6. [Contributing](#contributing)
