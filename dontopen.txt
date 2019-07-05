@@ -1,0 +1,50 @@
+
+		function hasNumericAttribute(object) {
+			for (key in object) {
+				if (object[key] instanceof Object) {
+					return hasNumericAttribute(object[key]);
+				} else {
+					if ($.isNumeric(object[key])) {
+						return true;
+					}
+				}
+			}
+			return false;
+		}
+
+
+		function addArrayMap(attribute, map, entity, snapshotNumber) {
+			for (key in attribute) {		
+				var attributeKey = attribute[key];
+				if (attributeKey instanceof Object) {
+					addArrayMap(attributeKey, map, entity, snapshotNumber);
+				} else {
+					//Creates an array if it doesn't exist yet, then adds the current number to it
+					if(!map[entity.entityID].hasOwnProperty(key) && $.isNumeric(attributeKey) ) {
+						map[entity.entityID][key] = [];
+					} 
+
+					if ($.isNumeric(attributeKey)) {
+						map[entity.entityID][key][snapshotNumber - 1] = attributeKey; // We don't push in case we don't get that attributes in some snapshots
+					}
+				}
+			}
+		}
+		
+
+		// Returns an object : for each entityID, the attributes and their evolution if they are numeric 
+		function getMapEntities(snapshots) {
+			var map = {};
+			for(var s = 1; s < Object.keys(snapshots).length; s++) { // Index 0 is empty
+				for(e in snapshots[s].entities) {
+					var entity = snapshots[s].entities[e];
+					// Adds the entity to the map if it doesn't exist yet 
+					if (!map.hasOwnProperty(entity.entityID) && _.has(entity, 'attributeMap') && hasNumericAttribute(entity.attributeMap)) {
+						map[entity.entityID] = {};
+						map[entity.entityID].type = entity.type;
+					}
+					addArrayMap(entity.attributeMap, map, entity, s);
+				}
+			}
+			return map;
+		}
