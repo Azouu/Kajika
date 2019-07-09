@@ -5,7 +5,7 @@
     <title> <?php 
     			require_once('lib.php');
     			$col = $_GET['col'];
-				echo $database->$col->findOne()->experimentName; 
+				echo $database->$col->findOne()->experimentName;
 			?> 
 	</title>
 	<script type="text/javascript" src="customizationVariables.js"></script> 
@@ -14,6 +14,20 @@
 </head>
 
 <body>
+
+<?php
+	function shutDownFunction() { 
+		$error = error_get_last();
+		if ($error['type'] === E_ERROR) { 
+			echo "<div><h2 class='mx-auto p-2'>Please refresh the page (Ctrl + F5)</h2></div>";
+			exit(1);
+		}
+		return true;
+	}
+	register_shutdown_function('shutDownFunction');
+?>
+
+
 <div class="wrapper">
 
 	<?php 
@@ -37,14 +51,18 @@
 		    	<a id="sidebarCollapse" class="btn my-auto">
 					<i class="fas fa-align-left"></i>
 				</a>
- 
+				<?php
+					echo "<div>";
+					$experimentName = $database->$col->findOne()->experimentName; 
+	 				$cursor = $database->$col->find();
+					$document = $cursor->toArray();			
+					$bson = MongoDB\BSON\fromPHP($document);			
+					$json = MongoDB\BSON\toJSON($bson);
+					echo "</div>";
+				?>
 				<h1 class="mx-auto p-2" id="experiment-name">
 					<?php
-						echo $database->$col->findOne()->experimentName; 			
-						$cursor = $database->$col->find();
-						$document = $cursor->toArray();			
-						$bson = MongoDB\BSON\fromPHP($document);			
-						$json = MongoDB\BSON\toJSON($bson);
+						echo $experimentName;			
 					?>
 				</h1>
 
