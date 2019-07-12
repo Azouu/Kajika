@@ -110,6 +110,25 @@ var defaultOptions = {
 }; 
 ```
 
+### Fixed absolute position of the entities
+By default, entities are placed by vis.js in order to obtain a balanced graph. It is possible to set a fixed position for the entities.
+It is necessary to specify the fields **x, y and fixed**.
+It is advisable **to give a position to all entities** in the system. The size of the viewing window adapts to the most distant positions.
+#### Example 5: the entities with ID `agent1` and `agent2` have fixed positions.
+ ```javascript 
+var defaultOptions = {
+	nodes  : { 	
+		entityID : {
+			"agent1" : {x:0, y:0, fixed:true},
+			"agent2" : {x:50, y:50, fixed:true}
+		},
+		attributeMap : {},
+		type : {}
+	}
+}; 
+```
+
+
 ### Customization by attribute 
 If you want to change the style of all the entities/relations that verify a certain expression depending on a specific attribute, the structure of the nested objects will be different. Go to**nodes -> attributeMap** or **relations -> attributeMap**
 * **Key** : attribute name.
@@ -161,7 +180,7 @@ The options object are dependent on the vis.js library. You will find many more 
 The **Name** column in the table references one of the many keys you can have in an options object. You can sometimes find nested objects (When the **Name** has a dropdown arrow).  
 If you want to have concrete examples on how to use these options, see the **full options** section of the vis.js nodes and edges documentation (links above).
 
-#### Example 5: the entities with an attribute `criticality >= 80 ` are squared-shaped.
+#### Example 6: the entities with an attribute `criticality >= 80 ` are squared-shaped.
 
  ```javascript 
 var defaultOptions = {
@@ -188,7 +207,7 @@ var defaultOptions = {
 }; 
 ```
 
-#### Example 6: If the entities with the ID `agent1`or `agent2` verify the expression `criticality == 0 `, then their size will be 50.
+#### Example 7: If the entities with the ID `agent1`or `agent2` verify the expression `criticality == 0 `, then their size will be 50.
  ```javascript 
 var defaultOptions = {
 	nodes  : { 	
@@ -214,7 +233,7 @@ var defaultOptions = {
 }; 
 ```
 
-#### Example 7: Combination of all the examples
+#### Example 8: Combination of all the examples
 You can combine all the examples we have shown above. We add that all the agents with the attribute `error < 0.5` have a red border.
  ```javascript 
 var defaultOptions = {
@@ -268,7 +287,7 @@ If you specify similar keys in the options object, the priority order for applyi
 **ID > attributeMap > type**.  
 However, if 2 or more criteria are verified in the attributeMap sub-object, the **last** is proritary.
 
-#### Example 8: Priority orders for applying the `color` option
+#### Example 9: Priority orders for applying the `color` option
  ```javascript 
 var defaultOptions = {
 	nodes  : { 	
@@ -307,7 +326,7 @@ var defaultOptions = {
 	}
 }; 
 ```
-In the example 8, for all the criteria that are verified we apply a `color`option.  
+In the example 9, for all the criteria that are verified we apply a `color`option.  
 If `agent1` verify all the criteria, it will be **green** because **ID > attributeMap.**  
 However, for the other agents, if they validate either of the criteria related to the attributeMap, they will have a **red border** because the error is the last specified within the attributeMap object.
 Finally if an agent verify neither of the criteria except the one related to the type, it will be **yellow**.
@@ -334,7 +353,7 @@ Highlighted (selected) edges : dark blue (#2472f0)
 
 * **Setting the color option 
 If you want to set a color for the nodes/edges, be careful.
-#### Example 9
+#### Example 10
 ```javascript 
 	entityID : {
 			 agent1 : { 
@@ -342,8 +361,8 @@ If you want to set a color for the nodes/edges, be careful.
 			 }
 		}
 ```
-In the example 9, you overlap ALL color options. The node will be green even if it is highlighted. Instead you **should never set the color as a value of the color key, but rather supply an object**. If you want to change the color of the node/edge on highlight, see example 11.
-#### Example 10 : set the `background` color of the agent of ID 'agent1' to green
+In the example 10, you overlap ALL color options. The node will be green even if it is highlighted. Instead you **should never set the color as a value of the color key, but rather supply an object**. If you want to change the color of the node/edge on highlight, see example 12.
+#### Example 11 : set the `background` color of the agent of ID 'agent1' to green
 ```javascript 
 	entityID : {
 			 agent1 : { 
@@ -352,7 +371,7 @@ In the example 9, you overlap ALL color options. The node will be green even if 
 			 }
 		}
 ```
-#### Example 11 : set the `highlight` color of the agent of ID 'agent1' to red
+#### Example 12 : set the `highlight` color of the agent of ID 'agent1' to red
 ```javascript 
 	entityID : {
 			 agent1 : { 
