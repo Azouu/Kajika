@@ -1,6 +1,9 @@
 # Kajika
 Kajika is an open source web application that can be used to visualize networks and charts. 
-It is used to visualize Multi-Agents Systems using networks.  
+It is used to visualize Multi-Agents Systems using networks.
+
+Click [here](http://kajika.esteoule.fr/) to test Kajika.
+
 
 # Table of contents
 1. [Getting started](#getting-started)
